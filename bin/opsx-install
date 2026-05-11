@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -e
+
+PLUGIN_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+SCHEMA_SRC="$PLUGIN_DIR/schemas/superpowers-driven"
+
+# Windows (Git Bash / MSYS) uses $APPDATA
+if [[ -n "$APPDATA" ]]; then
+  SCHEMA_DST="$APPDATA/openspec/schemas/superpowers-driven"
+else
+  # Linux / Mac
+  SCHEMA_DST="${XDG_DATA_HOME:-$HOME/.local/share}/openspec/schemas/superpowers-driven"
+fi
+
+if [[ ! -d "$SCHEMA_SRC" ]]; then
+  echo "ERROR: Schema source not found at $SCHEMA_SRC" >&2
+  exit 1
+fi
+
+mkdir -p "$(dirname "$SCHEMA_DST")"
+
+if [[ -d "$SCHEMA_DST" ]]; then
+  echo "Updating existing schema at $SCHEMA_DST..."
+  rm -rf "$SCHEMA_DST"
+fi
+
+cp -r "$SCHEMA_SRC" "$SCHEMA_DST"
+echo "✓ superpowers-driven schema installed to $SCHEMA_DST"
+echo "  Verify: openspec schemas"
