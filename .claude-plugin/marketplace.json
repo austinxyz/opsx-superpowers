@@ -1,0 +1,20 @@
+{
+  "name": "opsx-superpowers",
+  "description": "OpenSpec workflow with built-in TDD + code review gates for Claude Code",
+  "owner": {
+    "name": "austinxyz",
+    "url": "https://github.com/austinxyz"
+  },
+  "plugins": [
+    {
+      "name": "opsx-superpowers",
+      "description": "OpenSpec workflow with built-in TDD + code review gates for Claude Code. Four-phase: explore → propose → apply → archive.",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "austinxyz",
+        "url": "https://github.com/austinxyz"
+      }
+    }
+  ]
+}

@@ -30,3 +30,17 @@ fi
 cp -r "$SCHEMA_SRC" "$SCHEMA_DST"
 echo "✓ superpowers-driven schema installed to $SCHEMA_DST"
 echo "  Verify: openspec schemas"
+
+# Install Claude Code slash commands into the current project.
+# Run this script from the project root where .claude/ lives.
+COMMANDS_SRC="$PLUGIN_DIR/commands/opsx"
+COMMANDS_DST=".claude/commands/opsx"
+
+if [[ ! -d "$COMMANDS_SRC" ]]; then
+  echo "WARNING: commands/opsx/ not found in plugin — skipping command install" >&2
+else
+  mkdir -p "$COMMANDS_DST"
+  cp -r "$COMMANDS_SRC"/. "$COMMANDS_DST/"
+  echo "✓ opsx commands installed to $COMMANDS_DST"
+  echo "  Available: /opsx:explore  /opsx:propose  /opsx:apply  /opsx:archive"
+fi

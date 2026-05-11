@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "OpenSpec workflow with built-in TDD + code review gates for Claude Code. Four-phase: explore → propose → apply → archive.",
   "author": {
-    "name": "austinxyz"
-  }
+    "name": "austinxyz",
+    "url": "https://github.com/austinxyz"
+  },
+  "repository": "https://github.com/austinxyz/opsx-superpowers",
+  "license": "MIT",
+  "keywords": [
+    "openspec",
+    "workflow",
+    "tdd",
+    "code-review",
+    "explore",
+    "planning"
+  ]
 }
