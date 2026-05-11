@@ -1,0 +1,8 @@
+{
+  "name": "opsx-superpowers",
+  "version": "1.0.0",
+  "description": "OpenSpec workflow with built-in TDD + code review gates for Claude Code. Four-phase: explore → propose → apply → archive.",
+  "author": {
+    "name": "austinxyz"
+  }
+}
