@@ -4,12 +4,15 @@ set -e
 PLUGIN_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 SCHEMA_SRC="$PLUGIN_DIR/schemas/superpowers-driven"
 
-# Windows (Git Bash / MSYS) uses $APPDATA
-if [[ -n "$APPDATA" ]]; then
-  SCHEMA_DST="$APPDATA/openspec/schemas/superpowers-driven"
+# XDG_DATA_HOME takes precedence on all platforms when explicitly set.
+# On Windows, OpenSpec falls back to %LOCALAPPDATA% (not %APPDATA%).
+if [[ -n "$XDG_DATA_HOME" ]]; then
+  SCHEMA_DST="$XDG_DATA_HOME/openspec/schemas/superpowers-driven"
+elif [[ -n "$LOCALAPPDATA" ]]; then
+  SCHEMA_DST="$LOCALAPPDATA/openspec/schemas/superpowers-driven"
 else
   # Linux / Mac
-  SCHEMA_DST="${XDG_DATA_HOME:-$HOME/.local/share}/openspec/schemas/superpowers-driven"
+  SCHEMA_DST="$HOME/.local/share/openspec/schemas/superpowers-driven"
 fi
 
 if [[ ! -d "$SCHEMA_SRC" ]]; then
