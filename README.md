@@ -23,11 +23,28 @@ claude --plugin-url https://github.com/austinxyz/opsx-superpowers
 
 ### 2. Promote the schema (run once, and after each upgrade)
 
+Run `opsx-install` **from your project root** (the directory that contains `.claude/`):
+
+**Mac / Linux / Git Bash:**
 ```bash
 opsx-install
 ```
 
-Verify: `openspec schemas` should list `superpowers-driven`.
+**Windows (PowerShell terminal):**
+
+Running `bash` in PowerShell routes through WSL on most Windows machines. If WSL is not set up, you'll see:
+```
+WSL ERROR: execvpe(/bin/bash) failed: No such file or directory
+```
+
+Fix: run the install from the Claude Code prompt using the `!` prefix (which uses Git Bash, not WSL):
+```
+! bash /c/Users/<you>/projects/opsx-superpowers/bin/opsx-install
+```
+
+Or open **Git Bash** and run `opsx-install` from there.
+
+**Verify:** `openspec schemas` should list `superpowers-driven` with `Source: user`.
 
 ## New Project Setup
 
@@ -82,6 +99,16 @@ opsx-install
 | `project.custom_verification_checks` | Project-specific checks in final verification | `["grep -rn 'secret' src/"]` |
 | `context` | Project description for Claude | Natural language |
 | `rules` | Per-artifact generation rules | See config-template.yaml |
+
+## Detailed workflow reference
+
+See [docs/workflow.md](docs/workflow.md) for:
+
+- When to use OpenSpec (and when not to)
+- Phase-by-phase breakdown with inputs, outputs, and anti-patterns
+- Project file layout
+- Known gotchas (including the `openspec status` false `[ ]` issue)
+- Quarterly upstream sync routine
 
 ## Does this conflict with official OpenSpec commands?
 
