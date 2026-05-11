@@ -1,0 +1,29 @@
+schema: superpowers-driven
+
+project:
+  dev_stack_command: ""          # e.g. "docker compose up -d" or "npm run dev"
+  test_commands:
+    - ""                         # e.g. "pytest" / "go test ./..." / "npm test"
+  e2e_command: ""                # optional, e.g. "npm run e2e" — leave empty to skip
+  design_system: "notion"        # notion | linear | custom
+  custom_verification_checks: [] # project-specific grep/lint checks appended to final verification
+                                 # e.g. 'grep -rn "hardcoded_secret" src/'
+
+context: |
+  # Describe your project so Claude understands it. Include:
+  # - Tech stack and versions (e.g. "Python 3.12 + FastAPI + PostgreSQL")
+  # - Directory structure (e.g. "backend/app/, frontend/src/")
+  # - How to run tests (e.g. "pytest from repo root, vitest from frontend/")
+  # - Key conventions (naming, error handling, auth patterns)
+  # - Any shared components or patterns Claude should reuse
+  # This context is injected into every artifact generation prompt.
+
+rules: {}
+  # Per-artifact rules appended to artifact-specific instructions.
+  # Examples:
+  # tasks:
+  #   - "Django rule: use pytest-django fixtures; never instantiate models without factory_boy."
+  # design:
+  #   - "For any database change: state migration strategy and rollback plan."
+  # specs:
+  #   - "All API endpoints SHALL document authentication requirements."
