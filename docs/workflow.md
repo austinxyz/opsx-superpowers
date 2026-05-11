@@ -2,6 +2,10 @@
 
 Four-phase structured development with hard-boundary gates. TDD and code review are wired in automatically — not optional add-ons.
 
+![OpenSpec + Superpowers Workflow](openspec+superpowers.png)
+
+*4 phases — Purpose / Key Activities / Outputs / Gate / AI Tools & Skills / Source of Truth.*
+
 ```
 /opsx:explore <topic>   → discuss → requirements.md (DRAFT → REVIEWED)
                             ↓
