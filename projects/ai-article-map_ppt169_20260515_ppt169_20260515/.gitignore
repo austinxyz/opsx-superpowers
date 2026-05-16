@@ -1,0 +1,13 @@
+# ppt-master intermediate files
+svg_output/
+svg_final/
+sources/
+backup/
+templates/
+images/
+notes/
+.cache/
+
+# Intermediate export builds — keep only the final linked version
+exports/*.pptx
+!exports/ai-article-map_ppt169_20260515_linked_v2.pptx

@@ -1,0 +1,13 @@
+# ppt-master intermediate files
+svg_output/
+svg_final/
+sources/
+backup/
+templates/
+images/
+notes/
+.cache/
+
+# Intermediate export builds — keep only the final
+exports/*.pptx
+!exports/opsx-workflow-intro_20260515_070156.pptx

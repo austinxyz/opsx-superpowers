@@ -1,0 +1,3 @@
+# Source import files (raw material, not outputs)
+*.md
+*_files/
