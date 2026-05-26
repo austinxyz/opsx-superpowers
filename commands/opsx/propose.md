@@ -66,6 +66,8 @@ Order: `proposal` → `specs` → `design` → `mocks` → `tasks`.
 
 After the `tasks` artifact is generated, the `### Contract` blocks contain placeholder comments. Fill them in now — the N.0 CONTRACT task in apply will copy this content to a file; the content decisions happen here.
 
+The generated `tasks.md` uses the harness template: each group has an `N.0 CONTRACT` task (first) and an `N.E EVAL` task (last). Verify these entries appear in the generated file — if you see `N.Z Run superpowers:requesting-code-review` instead, the schema lock is pointing to the old template. Fix it before proceeding.
+
 For each `## N` group in `openspec/changes/<topic>/tasks.md`:
 
 **Spec field:** Read `openspec/changes/<topic>/specs/<cap>/spec.md`. Identify which SHALL statements this group's tasks implement (by reading the task descriptions). Copy those SHALL statements verbatim into the Contract's Spec field. If multiple capabilities are touched, include statements from each.
