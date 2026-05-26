@@ -70,9 +70,9 @@ The generated `tasks.md` uses the harness template: each group has an `N.0 CONTR
 
 For each `## N` group in `openspec/changes/<topic>/tasks.md`:
 
-**Spec field:** Read `openspec/changes/<topic>/specs/<cap>/spec.md`. Identify which SHALL statements this group's tasks implement (by reading the task descriptions). Copy those SHALL statements verbatim into the Contract's Spec field. If multiple capabilities are touched, include statements from each.
+**Spec field:** Read `openspec/changes/<topic>/specs/<cap>/spec.md`. Identify which SHALL statements this group's tasks implement (by reading the task descriptions). Copy those SHALL statements verbatim into the Contract's Spec field. If multiple capabilities are touched, include statements from each. If no SHALL statements map to this group (e.g., pure infrastructure task), write `N/A — infrastructure group` and note why.
 
-**Runtime field:** Read `openspec/config.yaml` → `project.test_commands`. Choose the command most relevant to this group's tests (e.g., for a backend group: `pytest tests/<module>/`; for a frontend group: `vitest run src/<module>/`). Scope the path to the files this group touches if possible. Set expected to a plain-language description of what passing looks like (e.g., "all 4 tests pass, no import errors").
+**Runtime field:** Read `openspec/config.yaml` → `project.test_commands`. Choose the command most relevant to this group's tests (e.g., for a backend group: `pytest tests/<module>/`; for a frontend group: `vitest run src/<module>/`). Scope the path to the files this group touches if possible. Set expected to a plain-language description of what passing looks like (e.g., "all 4 tests pass, no import errors"). If `project.test_commands` is absent or empty in `openspec/config.yaml`, write `command: TBD` and `expected: TBD — test harness not yet configured`.
 
 **Code field:** Read `openspec/changes/<topic>/design.md`. Extract the design decisions and risk points that apply to this group. 1–3 bullet points. Examples: "must use repository pattern, no direct DB calls in route handler", "token must be validated before any capability check".
 
