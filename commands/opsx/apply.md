@@ -72,12 +72,14 @@ Spawn via the **Agent** tool with `model: haiku`. Pass ONLY these files as conte
 - `openspec/changes/<name>/design.md`
 - The git diff for files modified in group N: run `git diff HEAD~<n>..HEAD -- <files changed in group N>` and include the output
 
+Before passing the prompt, substitute the current `attempt` count in place of `<attempt_number>` in step 8's YAML block.
+
 Evaluator prompt (pass this verbatim to the subagent):
 
 > You are an external evaluator with a skeptical lens. You have no knowledge of the implementation decisions made during this session.
 >
 > 1. Invoke `superpowers:requesting-code-review` on the provided diff. If you find CRITICAL or HIGH severity issues, return immediately with `STATUS: BLOCK` and the findings. Do not score.
-> 2. Run the Runtime test command from the contract. Record pass/fail and output.
+> 2. Run the Runtime test command from the contract. Execute it as a shell command in the repo root and record pass/fail and output.
 > 3. Compare the diff against each SHALL statement in the contract's Spec section. Score 0–100.
 > 4. Score Runtime 0–100 (100 = all tests pass, 0 = test command fails to run).
 > 5. Score Code 0–100 based on requesting-code-review findings (no CRITICAL/HIGH assumed at this point).
@@ -109,12 +111,12 @@ score_history = []
 
 After each evaluator result:
 
-- **BLOCK** → pause immediately: "Group N BLOCKED — CRITICAL/HIGH code issue found. Fix and resume from N.E EVAL." Do not retry.
+- **BLOCK** → pause immediately: "Group N BLOCKED — CRITICAL/HIGH code issue found. Options: (1) Fix the issue manually and type 'resume' to re-run N.E EVAL (attempt count resets to 1), (2) Skip group N, (3) Abort apply." Do not retry automatically.
 - **PASS** → mark N.E EVAL checkbox `[x]`, advance to next group.
 - **RETRY** →
   - Append `result.total` to `score_history`
   - Increment `attempt`
-  - **Escalate if:** `attempt > 3` OR `(len(score_history) >= 2 AND score_history[-1] - score_history[-2] < 5)`
+  - **Escalate if:** `attempt > 3` OR `(len(score_history) >= 2 AND score_history[-1] - score_history[-2] < 5)` — note: a score regression (worsening) also triggers escalation, since the delta will be negative (< 5).
   - If escalating: pause with score history — "Group N failed after {attempt-1} attempts. Score history: {score_history}. Last findings: {findings}. Options: (1) Fix manually then type 'resume', (2) Skip group N, (3) Abort apply."
   - Otherwise: FIX tasks were already appended to `tasks.md` by the evaluator. Execute them, then re-spawn the evaluator.
 
