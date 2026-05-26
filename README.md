@@ -13,6 +13,13 @@ Four-phase development discipline:
 
 Each phase is a hard boundary. You cannot skip phases.
 
+## Prerequisites
+
+| Prerequisite | Install |
+|---|---|
+| [superpowers](https://github.com/obra/superpowers) — skills infrastructure | `claude --plugin-url https://github.com/obra/superpowers` |
+| [OpenSpec CLI](https://github.com/Fission-AI/OpenSpec) — schema + workflow engine (Node 20.19+) | `npm install -g @fission-ai/openspec@latest` |
+
 ## Install
 
 ### 1. Install the plugin
@@ -50,7 +57,7 @@ Or open **Git Bash** and run `opsx-install` from there.
 
 ```bash
 cd my-project
-openspec init
+openspec init --tools none
 # Copy the starter config
 cp <plugin-cache-dir>/config-template.yaml openspec/config.yaml
 # Edit openspec/config.yaml — fill in your project section and context
