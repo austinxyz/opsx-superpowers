@@ -11,7 +11,7 @@ Four-phase structured development with hard-boundary gates. TDD and code review 
                             ↓
 /opsx:propose <topic>   → proposal + specs + design + tasks
                             ↓
-/opsx:apply <topic>     → TDD execution + code review gates
+/opsx:apply <topic>     → TDD execution + evaluator harness (contract → eval → retry)
                             ↓
 /opsx:archive <topic>   → archive + capability spec + CLAUDE.md cleanup
 ```
@@ -81,10 +81,12 @@ Four-phase structured development with hard-boundary gates. TDD and code review 
 
 **Task template rules (injected by the schema):**
 
-- Every new feature: `N.X RED — <write failing test>` immediately followed by `N.X+1 GREEN — <minimal implementation>`
-- Each group ends with: `N.Z Run superpowers:requesting-code-review on the diff for group N`
-- Any view-touching task: `MOCK → RED → GREEN → VISUAL DIFF` sandwich
+- Each group starts with a `### Contract` block (Spec / Runtime / Code / Threshold) filled at propose time
+- Every group: `N.0 CONTRACT` → `N.X RED` → `N.X+1 GREEN` → `N.E EVAL`
+- Any view-touching task: `MOCK → RED → GREEN → VISUAL DIFF` sandwich (inside the group)
 - Final group always includes: `Run superpowers:verification-before-completion`
+
+**Also at propose time:** `contracts/` directory and `eval-log.md` are pre-created under the change directory.
 
 ### Outputs
 
@@ -101,19 +103,22 @@ openspec/changes/<topic>/
 
 ## Phase 3 — `/opsx:apply <topic>`
 
-**Goal:** Execute code + automatically trigger TDD and code review checkpoints.
+**Goal:** Execute code + automatically trigger TDD and evaluator harness per group.
 
 **What happens:**
 
 1. Load full context (proposal / specs / design / mocks / requirements)
-2. **Session-start: invoke `superpowers:test-driven-development`** — this skill enforces "no GREEN without RED" throughout
-3. Execute `tasks.md` in order:
-   - `RED` → write failing test, run it, confirm the failure mode
+2. **Session-start: invoke `superpowers:test-driven-development`** — enforces "no GREEN without RED" throughout
+3. Execute `tasks.md` in order, per group:
+   - `N.0 CONTRACT` → write `contracts/group-N.md` from the `### Contract` block; all three fields (Spec / Runtime / Code) must be non-empty
+   - `RED` → write failing test, run it, confirm failure mode
    - `GREEN` → minimal implementation, run, confirm it passes
-   - `MOCK` → open the mock file for visual reference
-   - `VISUAL DIFF` → bring up dev stack, compare against mock in browser, fix drift
-   - `Run superpowers:requesting-code-review` → actually invoke the skill, fix CRITICAL/HIGH issues immediately
+   - `MOCK` → open mock file for visual reference (UI groups only)
+   - `VISUAL DIFF` → bring up dev stack, compare against mock, fix drift (UI groups only)
+   - `N.E EVAL` → spawn evaluator subagent (haiku, fresh context); invokes `superpowers:requesting-code-review` internally; scores Spec / Runtime / Code (formula: 40% / 40% / 20%); CRITICAL/HIGH = immediate BLOCK; total < threshold → append FIX tasks + retry (max 3 attempts, plateau < 5pt = escalate to human)
 4. Final group: `superpowers:verification-before-completion` (pytest / vitest / e2e / stray `console.log` audit)
+
+**Evaluator is a separate subagent** — fresh context, skeptical lens. It never inherits the apply-session conversation. This prevents the self-assessment bias described in [Anthropic's harness design article](https://www.anthropic.com/engineering/harness-design-long-running-apps).
 
 **Each task gets checked off immediately (`- [x]`) — no batch marking.**
 
@@ -131,7 +136,7 @@ openspec/changes/<topic>/
 2. `openspec archive <topic>` — moves change to `openspec/changes/archive/<date>-<topic>/`, merges spec deltas into `openspec/specs/<capability>/spec.md`
 3. **Cleanup 1: fill `## Purpose` in capability spec** — `openspec archive` leaves `TBD`; extract 1–3 sentences from proposal's Why + requirements Goals. *This is one of the core motivations for this workflow* — a `TBD` Purpose is a dead-end for future contributors.
 4. **Cleanup 2: update `openspec/specs/README.md`** — add a line for any new capability (user story / covered requirements / backend / frontend / acceptance criteria)
-5. **Cleanup 3: update `CLAUDE.md` Pitfalls** — if you hit a non-obvious gotcha, add it; otherwise skip (don't pad)
+5. **Cleanup 3: update `CLAUDE.md` Pitfalls** — read `eval-log.md` first: groups with `attempt > 1` are automatic pitfall candidates (the retries are structured signals of non-obvious complexity). Then check dev log + diff. Don't fabricate.
 6. **Cleanup 4: conditionally update project `README.md`** — only if this change introduces user-visible new behavior (auth flow changed = update; internal ops = skip)
 7. Dev log check — remind you to write `docs/log/<today>.md` if missing
 8. Single cleanup commit + "Workflow complete"
@@ -157,6 +162,10 @@ openspec/changes/<topic>/
 │   │   │   ├── specs/<cap>/spec.md
 │   │   │   ├── design.md
 │   │   │   ├── tasks.md
+│   │   │   ├── contracts/               ← per-group contract files (written by N.0 CONTRACT)
+│   │   │   │   ├── group-1.md
+│   │   │   │   └── group-2.md
+│   │   │   ├── eval-log.md              ← evaluator score history (appended by N.E EVAL)
 │   │   │   └── manual-ops.md            ← optional; manual step checklist
 │   │   └── archive/
 │   │       └── <date>-<topic>/
