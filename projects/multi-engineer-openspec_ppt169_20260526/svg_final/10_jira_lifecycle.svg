@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117" />
+
+  
+  <path fill="url(#titleGrad)" d="M66,36 H66 A2,2 0 0 1 68,38 V70 A2,2 0 0 1 66,72 H66 A2,2 0 0 1 64,70 V38 A2,2 0 0 1 66,36 Z" />
+  <text x="84" y="60" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">OpenSpec + JIRA — Automated Lifecycle</text>
+  <text x="84" y="88" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#94A3B8">Zero manual JIRA updates · jira_key optional in .meta.yaml · hooks run as opsx post-steps</text>
+
+  
+
+  
+  <path fill="#4F8EF7" fill-opacity="0.15" stroke="#4F8EF7" stroke-width="2" d="M86,112 H198 A22,22 0 0 1 220,134 V134 A22,22 0 0 1 198,156 H86 A22,22 0 0 1 64,134 V134 A22,22 0 0 1 86,112 Z" />
+  <text x="142" y="134" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#4F8EF7">Exploring</text>
+
+  
+  <line x1="220" y1="134" x2="240" y2="134" stroke="#2D3748" stroke-width="1.5" />
+  <polygon points="237,129 246,134 237,139" fill="#2D3748" />
+
+  
+  <path fill="#818CF8" fill-opacity="0.15" stroke="#818CF8" stroke-width="2" d="M268,112 H380 A22,22 0 0 1 402,134 V134 A22,22 0 0 1 380,156 H268 A22,22 0 0 1 246,134 V134 A22,22 0 0 1 268,112 Z" />
+  <text x="324" y="134" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#818CF8">Proposing</text>
+
+  
+  <line x1="402" y1="134" x2="422" y2="134" stroke="#2D3748" stroke-width="1.5" />
+  <polygon points="419,129 428,134 419,139" fill="#2D3748" />
+
+  
+  <path fill="#F59E0B" fill-opacity="0.15" stroke="#F59E0B" stroke-width="2" d="M450,112 H566 A22,22 0 0 1 588,134 V134 A22,22 0 0 1 566,156 H450 A22,22 0 0 1 428,134 V134 A22,22 0 0 1 450,112 Z" />
+  <text x="508" y="127" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#F59E0B">Spec</text>
+  <text x="508" y="143" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#F59E0B">Review</text>
+
+  
+  <line x1="588" y1="134" x2="608" y2="134" stroke="#2D3748" stroke-width="1.5" />
+  <polygon points="605,129 614,134 605,139" fill="#2D3748" />
+
+  
+  <path fill="#34D399" fill-opacity="0.15" stroke="#34D399" stroke-width="2" d="M636,112 H748 A22,22 0 0 1 770,134 V134 A22,22 0 0 1 748,156 H636 A22,22 0 0 1 614,134 V134 A22,22 0 0 1 636,112 Z" />
+  <text x="692" y="134" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#34D399">Applying</text>
+
+  
+  <line x1="770" y1="134" x2="790" y2="134" stroke="#2D3748" stroke-width="1.5" />
+  <polygon points="787,129 796,134 787,139" fill="#2D3748" />
+
+  
+  <path fill="#F59E0B" fill-opacity="0.12" stroke="#F59E0B" stroke-width="2" d="M818,112 H930 A22,22 0 0 1 952,134 V134 A22,22 0 0 1 930,156 H818 A22,22 0 0 1 796,134 V134 A22,22 0 0 1 818,112 Z" />
+  <text x="874" y="127" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#F59E0B">In</text>
+  <text x="874" y="143" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#F59E0B">Review</text>
+
+  
+  <line x1="952" y1="134" x2="972" y2="134" stroke="#2D3748" stroke-width="1.5" />
+  <polygon points="969,129 978,134 969,139" fill="#2D3748" />
+
+  
+  <path fill="#34D399" fill-opacity="0.2" stroke="#34D399" stroke-width="2" d="M1000,112 H1076 A22,22 0 0 1 1098,134 V134 A22,22 0 0 1 1076,156 H1000 A22,22 0 0 1 978,134 V134 A22,22 0 0 1 1000,112 Z" />
+  <text x="1038" y="134" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#34D399">✅ Done</text>
+
+  
+  <line x1="692" y1="156" x2="692" y2="176" stroke="#F87171" stroke-width="1.5" stroke-dasharray="4,3" />
+  <path fill="#F87171" fill-opacity="0.1" stroke="#F87171" stroke-width="1.5" d="M630,176 H754 A18,18 0 0 1 772,194 V194 A18,18 0 0 1 754,212 H630 A18,18 0 0 1 612,194 V194 A18,18 0 0 1 630,176 Z" />
+  <text x="692" y="194" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="700" fill="#F87171">⛔ Blocked</text>
+
+  
+  
+  <path fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1" d="M72,236 H212 A8,8 0 0 1 220,244 V348 A8,8 0 0 1 212,356 H72 A8,8 0 0 1 64,348 V244 A8,8 0 0 1 72,236 Z" />
+  <text x="142" y="258" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#4F8EF7">TRIGGER</text>
+  <text x="142" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#34D399">opsx explore</text>
+  <rect x="76" y="290" width="132" height="1" fill="#2D3748" />
+  <text x="142" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#4F8EF7">LINK ADDED</text>
+  <text x="142" y="326" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">requirements.md</text>
+  <text x="142" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748B">local or Jenkins</text>
+
+  
+  <line x1="142" y1="156" x2="142" y2="236" stroke="#4F8EF7" stroke-width="1" stroke-dasharray="3,3" />
+
+  
+  <path fill="#1C1F2E" stroke="#818CF8" stroke-width="1" d="M254,236 H394 A8,8 0 0 1 402,244 V348 A8,8 0 0 1 394,356 H254 A8,8 0 0 1 246,348 V244 A8,8 0 0 1 254,236 Z" />
+  <text x="324" y="258" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#818CF8">TRIGGER</text>
+  <text x="324" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#34D399">opsx propose</text>
+  <rect x="258" y="290" width="132" height="1" fill="#2D3748" />
+  <text x="324" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#818CF8">LINKS ADDED</text>
+  <text x="324" y="326" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">proposal.md</text>
+  <text x="324" y="342" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">design.md · tasks.md</text>
+
+  
+  <line x1="324" y1="156" x2="324" y2="236" stroke="#818CF8" stroke-width="1" stroke-dasharray="3,3" />
+
+  
+  <path fill="#1C1F2E" stroke="#F59E0B" stroke-width="1" d="M436,236 H580 A8,8 0 0 1 588,244 V348 A8,8 0 0 1 580,356 H436 A8,8 0 0 1 428,348 V244 A8,8 0 0 1 436,236 Z" />
+  <text x="508" y="258" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#F59E0B">TRIGGER</text>
+  <text x="508" y="276" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">PR1 opens (large track)</text>
+  <rect x="440" y="290" width="132" height="1" fill="#2D3748" />
+  <text x="508" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#F59E0B">ACTION</text>
+  <text x="508" y="326" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">spec-locked label set</text>
+  <text x="508" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748B">small track: skipped</text>
+
+  
+  <line x1="508" y1="156" x2="508" y2="236" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3" />
+
+  
+  <path fill="#1C1F2E" stroke="#34D399" stroke-width="1" d="M622,236 H762 A8,8 0 0 1 770,244 V348 A8,8 0 0 1 762,356 H622 A8,8 0 0 1 614,348 V244 A8,8 0 0 1 622,236 Z" />
+  <text x="692" y="258" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#34D399">TRIGGER</text>
+  <text x="692" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#34D399">opsx apply</text>
+  <rect x="626" y="290" width="132" height="1" fill="#2D3748" />
+  <text x="692" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#34D399">LINK ADDED</text>
+  <text x="692" y="326" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">eval-log.md (live)</text>
+  <text x="692" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748B">Jenkins agent</text>
+
+  
+  <line x1="692" y1="156" x2="692" y2="236" stroke="#34D399" stroke-width="1" stroke-dasharray="3,3" />
+
+  
+  <path fill="#1C1F2E" stroke="#F59E0B" stroke-width="1" d="M804,236 H944 A8,8 0 0 1 952,244 V348 A8,8 0 0 1 944,356 H804 A8,8 0 0 1 796,348 V244 A8,8 0 0 1 804,236 Z" />
+  <text x="874" y="258" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#F59E0B">TRIGGER</text>
+  <text x="874" y="276" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">PR2 opens</text>
+  <rect x="808" y="290" width="132" height="1" fill="#2D3748" />
+  <text x="874" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#F59E0B">LINK ADDED</text>
+  <text x="874" y="326" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">PR URL</text>
+  <text x="874" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748B">Jenkins post-build</text>
+
+  
+  <line x1="874" y1="156" x2="874" y2="236" stroke="#F59E0B" stroke-width="1" stroke-dasharray="3,3" />
+
+  
+  <path fill="#1C1F2E" stroke="#34D399" stroke-width="1.5" d="M986,236 H1208 A8,8 0 0 1 1216,244 V348 A8,8 0 0 1 1208,356 H986 A8,8 0 0 1 978,348 V244 A8,8 0 0 1 986,236 Z" />
+  <text x="1097" y="258" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#34D399">TRIGGER</text>
+  <text x="1097" y="276" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#34D399">opsx archive (DoD pass)</text>
+  <rect x="990" y="290" width="214" height="1" fill="#2D3748" />
+  <text x="1097" y="308" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="#34D399">LINKS ADDED</text>
+  <text x="1097" y="326" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">pitfalls.md · spec archived</text>
+  <text x="1097" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#64748B">JIRA Done transition unlocked</text>
+
+  
+  <line x1="1038" y1="156" x2="1038" y2="236" stroke="#34D399" stroke-width="1" stroke-dasharray="3,3" />
+
+  
+  <rect x="612" y="228" width="160" height="8" fill="#0F1117" />
+  
+
+  
+  <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M76,388 H1204 A12,12 0 0 1 1216,400 V556 A12,12 0 0 1 1204,568 H76 A12,12 0 0 1 64,556 V400 A12,12 0 0 1 76,388 Z" />
+
+  
+  <text x="88" y="414" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#4F8EF7">openspec/topics/auth-refactor/.meta.yaml</text>
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M94,424 H422 A6,6 0 0 1 428,430 V550 A6,6 0 0 1 422,556 H94 A6,6 0 0 1 88,550 V430 A6,6 0 0 1 94,424 Z" />
+  <text x="104" y="444" font-family="JetBrains Mono, monospace" font-size="12" fill="#94A3B8">topic: auth-refactor</text>
+  <text x="104" y="462" font-family="JetBrains Mono, monospace" font-size="12" fill="#F59E0B">jira_key: PROJ-123</text>
+  <text x="104" y="480" font-family="JetBrains Mono, monospace" font-size="12" fill="#94A3B8">jira_project: PROJ</text>
+  <text x="104" y="498" font-family="JetBrains Mono, monospace" font-size="12" fill="#94A3B8">track: large</text>
+  <text x="104" y="516" font-family="JetBrains Mono, monospace" font-size="12" fill="#34D399">phase: applying</text>
+  <text x="104" y="534" font-family="JetBrains Mono, monospace" font-size="12" fill="#64748B">pr1_url: https://git/...</text>
+
+  
+  <line x1="452" y1="404" x2="452" y2="556" stroke="#2D3748" stroke-width="1" />
+  <text x="476" y="414" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#818CF8">jira_hook.py — called by each opsx command</text>
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M482,424 H830 A6,6 0 0 1 836,430 V550 A6,6 0 0 1 830,556 H482 A6,6 0 0 1 476,550 V430 A6,6 0 0 1 482,424 Z" />
+  <text x="492" y="444" font-family="JetBrains Mono, monospace" font-size="12" fill="#64748B">jira_hook.py &lt;phase&gt; &lt;topic&gt;</text>
+  <text x="492" y="464" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94A3B8">reads: .meta.yaml · eval-log.md · $JIRA_TOKEN</text>
+  <text x="492" y="482" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#34D399">exit 0 → success or jira_key absent</text>
+  <text x="492" y="500" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#F87171">exit 1 → DoD fail (archive only)</text>
+  <text x="492" y="518" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">exit 2 → JIRA API error (non-fatal)</text>
+  <text x="492" y="540" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">no JIRA_TOKEN → silent skip</text>
+
+  
+  <line x1="860" y1="404" x2="860" y2="556" stroke="#2D3748" stroke-width="1" />
+  <text x="884" y="414" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#34D399">Key rules</text>
+  <text x="884" y="438" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• JIRA outage never breaks a build</text>
+  <text x="884" y="460" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• No jira_key → all hooks skip silently</text>
+  <text x="884" y="482" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• Local dev: no token → no JIRA calls</text>
+  <text x="884" y="504" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• Hooks run after phase files written</text>
+  <text x="884" y="526" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• Small track: Spec Review skipped</text>
+
+  
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M72,588 H1208 A8,8 0 0 1 1216,596 V624 A8,8 0 0 1 1208,632 H72 A8,8 0 0 1 64,624 V596 A8,8 0 0 1 72,588 Z" />
+  <text x="640" y="610" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Supports both flows: JIRA-first (PM creates ticket → engineer sets jira_key) and OpenSpec-first (engineer starts spec → links ticket later)</text>
+
+  
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">10 / 11</text>
+</svg>

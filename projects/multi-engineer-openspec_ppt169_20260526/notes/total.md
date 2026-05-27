@@ -35,3 +35,11 @@ At 4–6 engineers, shared files become write bottlenecks. CLAUDE.md and README.
 ## 09_getting_started
 
 Three actions, start today. Run /opsx:explore before writing any code — even on a feature you think you understand. For large features, open the spec PR before touching implementation. During apply, let the harness drive and review spec fidelity, not line counts. Achieve is archive + CI green + PR merged.
+
+## 10_jira_lifecycle
+
+The opsx CLI is the integration layer — Jenkins is a pure runner. Each phase command fires jira_hook.py as a post-step, automatically moving the ticket through seven statuses: Exploring → Proposing → Spec Review → Applying → In Review → Done (or Blocked). The jira_key in .meta.yaml is optional — absent means all hooks skip silently. This supports both JIRA-first teams (PM creates ticket first) and OpenSpec-first teams (engineer starts, links ticket later or never).
+
+## 11_jenkins_dod
+
+The DoD gate lives inside opsx archive — not in the Jenkinsfile. Jenkins sets credentials and runs the command; the command enforces all four checks. JIRA API errors (exit 2) are non-fatal — a JIRA outage never breaks a build. Only a DoD failure (exit 1) fails the archive stage. The MEDIUM and LOW findings from eval-log are warnings, never blockers. This keeps local dev unaffected: no JIRA_TOKEN or no jira_key means the hook exits 0 silently.
