@@ -21,6 +21,40 @@ This design extends the four-phase flow (explore → propose → apply → archi
 
 ## 1. Branch + PR Model (Two-track)
 
+```mermaid
+flowchart TD
+    Start([🚀 New Topic]) --> Size{Small or Large?}
+
+    Size -->|"≤2 days · single module\nno arch impact"| Small[📝 feat/topic branch]
+    Size -->|"≥3 days OR arch\nOR cross-module"| Large[📋 spec/topic branch]
+
+    Small --> SmallPR[🔄 Open draft PR]
+    SmallPR --> Apply1[⚙️ Apply — TDD + Eval]
+    Apply1 --> Arch1[📦 Archive on branch]
+    Arch1 --> Ready[✅ PR ready for review]
+    Ready --> Merge1([🎯 Merge → Achieve])
+
+    Large --> PR1[👥 PR1 Spec Review]
+    PR1 --> Spec{Spec approved?}
+    Spec -->|No| Revise[✏️ Revise spec]
+    Revise --> PR1
+    Spec -->|Yes| FeatBranch[📝 feat/topic from main]
+    FeatBranch --> Apply2[⚙️ Apply — TDD + Eval]
+    Apply2 --> Arch2[📦 Archive on branch]
+    Arch2 --> PR2[👥 PR2 Impl Review]
+    PR2 --> Merge2([🎯 Merge → Achieve])
+
+    classDef startEnd fill:#E6E6FA,stroke:#333,stroke-width:2px,color:darkblue
+    classDef process fill:#90EE90,stroke:#333,stroke-width:2px,color:darkgreen
+    classDef decision fill:#FFD700,stroke:#333,stroke-width:2px,color:black
+    classDef action fill:#87CEEB,stroke:#333,stroke-width:2px,color:darkblue
+
+    class Start,Merge1,Merge2 startEnd
+    class Small,Large,SmallPR,Apply1,Arch1,Ready,FeatBranch,Apply2,Arch2,Revise process
+    class Size,Spec decision
+    class PR1,PR2 action
+```
+
 ### Small feature track (default)
 
 ```
@@ -66,6 +100,35 @@ main
 ---
 
 ## 2. Achieve Criteria (Four-layer Gate)
+
+```mermaid
+flowchart TD
+    Start([⚙️ Apply complete]) --> L1{Layer 1\nLocal Gate}
+
+    L1 -->|"tasks ☑ · evals ≥ threshold\nno CRITICAL/HIGH · archive done"| L2{Layer 2\nCI Gate}
+    L1 -->|Fail| Fix1[🔧 Fix & re-eval]
+    Fix1 --> L1
+
+    L2 -->|"unit ✅ · integration ✅\nE2E ✅"| L3{Layer 3\nPR Gate}
+    L2 -->|Fail| Fix2[🔧 Paste log → Claude fixes\nengineer reviews diff → push]
+    Fix2 --> L2
+
+    L3 -->|"≥1 approval\nCI green · no open comments"| L4{Layer 4\nArchive Gate}
+    L3 -->|Fail| Fix3[📝 Address review comments]
+    Fix3 --> L3
+
+    L4 -->|"spec.md updated · pitfalls.md written\nREADME updated if new capability"| Achieve([🎯 Achieve])
+    L4 -->|Incomplete| Fix4[📦 Complete archive steps]
+    Fix4 --> L4
+
+    classDef startEnd fill:#E6E6FA,stroke:#333,stroke-width:2px,color:darkblue
+    classDef decision fill:#FFD700,stroke:#333,stroke-width:2px,color:black
+    classDef fix fill:#FFB6C1,stroke:#DC143C,stroke-width:2px,color:black
+
+    class Start,Achieve startEnd
+    class L1,L2,L3,L4 decision
+    class Fix1,Fix2,Fix3,Fix4 fix
+```
 
 Achieve = all four layers pass. Apply finishing is necessary but not sufficient.
 
@@ -125,6 +188,35 @@ Merge gate: ≥1 approval + all CI checks green + no unresolved comments.
 ## 3. Parallel Development + Conflict Resolution
 
 ### Isolation principle
+
+```mermaid
+flowchart TD
+    Start([📋 propose topic-B]) --> ReadSpecs[📖 Read openspec/specs/]
+    ReadSpecs --> ReadBranches["🌿 git branch -r\nread each active proposal.md"]
+    ReadBranches --> Conflict{Dependency\ndetected?}
+
+    Conflict -->|None| Safe[✅ Safe to parallelize]
+    Conflict -->|"Depends on topic-A\ninterface"| InterfaceLocked{A spec PR\nmerged?}
+    Conflict -->|"Same module\ncode conflict risk"| Rebase[🔄 Sequence topics\nA ships first]
+
+    InterfaceLocked -->|Yes| Safe
+    InterfaceLocked -->|No — A still active| Wait[⏳ Wait for A spec PR\nthen start apply]
+    Wait --> InterfaceLocked
+
+    Safe --> WriteDeps["📝 Write design.md\nDependencies section"]
+    Rebase --> WriteDeps
+    WriteDeps --> Apply([⚙️ Apply])
+
+    classDef startEnd fill:#E6E6FA,stroke:#333,stroke-width:2px,color:darkblue
+    classDef process fill:#90EE90,stroke:#333,stroke-width:2px,color:darkgreen
+    classDef decision fill:#FFD700,stroke:#333,stroke-width:2px,color:black
+    classDef wait fill:#FFB6C1,stroke:#DC143C,stroke-width:2px,color:black
+
+    class Start,Apply startEnd
+    class ReadSpecs,ReadBranches,Safe,Rebase,WriteDeps process
+    class Conflict,InterfaceLocked decision
+    class Wait wait
+```
 
 One engineer owns one topic end-to-end. No split ownership of a single topic.
 
