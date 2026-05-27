@@ -3,7 +3,7 @@
 **Date:** 2026-05-26  
 **Status:** REVIEWED  
 **Topic:** multi-engineer-workflow  
-**Scope:** 2-3 engineer teams with existing CI/CD + PR review
+**Scope:** 2-6 engineer teams with existing CI/CD + PR review (E2E in CD pipeline)
 
 ---
 
@@ -15,7 +15,7 @@ OpenSpec + Superpowers was designed for single-engineer usage. With the apply ha
 - Bottleneck shifts from implementation to spec quality and PR review bandwidth
 - Engineer role shifts from executor to judge
 
-This design extends the four-phase flow (explore → propose → apply → archive) to a 2-3 person team with CI/CD.
+This design extends the four-phase flow (explore → propose → apply → archive) to teams of 2-6 engineers with CI/CD. Core patterns apply from the first engineer; Sections 7 addresses the additional scaling concerns that emerge at 4-6 people.
 
 ---
 
@@ -87,14 +87,35 @@ Integration tests are a CI-only responsibility by design: local dev environments
 **CI failure after PR opens:** Engineer pastes failure log to Claude. Claude fixes on the feature branch, shows the diff, engineer reviews and approves, then Claude commits and pushes. Full apply is not re-run — only the specific failure is addressed. Git history stays clean: one fix commit per CI failure, not a force-push.
 
 ### Layer 3 — PR (team)
-- ≥1 approval from another engineer
-- All CI checks green
-- No unresolved review comments
+
+Two-tier review. Human judgment applies to spec intent; harness + CI own code correctness.
+
+**Spec PR review (high bar — PR1 in large track, or early draft review in small track):**
+- Read requirements.md + proposal.md + design.md + tasks.md
+- Ask: Is the decomposition clean? Are dependencies declared? Are CONTRACT blocks clear?
+- Anyone on the team can approve. No ownership matrix needed.
+- Time commitment: 15-30 minutes per spec PR.
+
+**Code PR review (lightweight — PR2 or small track PR):**
+
+| Check | Source |
+|-------|--------|
+| CI green (unit + integration + E2E)? | CI dashboard |
+| All eval groups pass threshold? | eval-log.md |
+| No unresolved CRITICAL/HIGH? | Final evaluator output |
+| manual-ops.md complete (if exists)? | manual-ops.md |
+| PR description matches spec intent? | proposal.md + PR description |
+
+Do not do line-by-line code review. The harness + E2E CD pipeline is the primary quality gate — more reliable than manual code review.
+
+**Who reviews:** Any engineer not owning the topic. No CODEOWNERS file. Coordinate via Slack/standup. At 4-6 people, each engineer reviews ~1-2 lightweight PRs or 1 spec PR per day — not a bottleneck.
+
+Merge gate: ≥1 approval + all CI checks green + no unresolved comments.
 
 ### Layer 4 — Archive
 - `openspec/specs/<capability>/spec.md` updated with spec deltas
-- `CLAUDE.md` pitfalls updated (eval-log retry groups = automatic pitfall candidates)
-- `openspec/specs/README.md` updated for any new capability
+- `openspec/specs/<capability>/pitfalls.md` updated by engineer/Claude during archive step. Source: eval-log retry groups (attempt > 1 = automatic candidate) + any non-obvious implementation constraints found during apply. **Pitfalls are delegated to per-capability files, not written to CLAUDE.md** — CLAUDE.md index is only updated via maintenance PR when a capability first appears (see Section 7).
+- `openspec/specs/README.md` updated only if a **new** capability is created (not for updates)
 - `README.md` updated only if user-visible behavior changed
 
 **Summary:** Apply ends when local eval passes. Achieve happens when PR merges to main and archive completes.
@@ -163,7 +184,7 @@ spec/arch-<name>
   tasks.md       ← Single task: team review + approve
 ```
 
-PR1 (Arch Spec Review) merge = team aligns on new architecture. All sub-topics reference this spec.
+PR1 (Arch Spec Review) merge = team aligns on new architecture. All sub-topics reference this spec. The arch spec PR does **not** create capability spec files — those are created/updated by each sub-topic during its own archive step. The arch spec only defines the plan and dependency order.
 
 ### Phase 2: Sub-topics in dependency order
 
@@ -176,7 +197,7 @@ arch-<name>
 
 Each sub-topic's design.md includes: `Arch ref: arch-<name>`.
 
-**Stale specs during refactor:** Mark capability specs with `Status: MIGRATING` in frontmatter. Cleanup rule: the sub-topic that owns that capability removes `MIGRATING` and sets `Status: ACTIVE` as part of its archive step. The sub-topic's tasks.md must include this as an explicit archive task — not optional cleanup.
+**Stale specs during refactor:** Mark capability specs with `Status: MIGRATING` in frontmatter. Cleanup rule: the **last sub-topic in dependency order** that touches a given capability owns the status flip from `MIGRATING` to `ACTIVE`. The arch spec PR's design.md must explicitly declare which sub-topic is last for each capability — this is part of the arch spec review. That sub-topic's tasks.md includes the status flip as an explicit archive task, not optional cleanup.
 
 ---
 
@@ -188,7 +209,7 @@ After each archive, capability specs live at `openspec/specs/<capability>/spec.m
 
 Claude uses it automatically during apply — reading `openspec/specs/` gives Claude awareness of existing capability contracts, preventing duplication and breakage.
 
-### Maintenance for 2-3 person teams
+### Maintenance
 
 Keep `openspec/specs/README.md` current: one line per capability with user story + status. This is the primary navigation artifact.
 
@@ -256,6 +277,74 @@ CI failures Claude cannot see, manual ops, third-party console operations, persi
 
 ---
 
+## 7. Shared File Architecture (4-6 Person Scaling)
+
+At 2-3 people, shared files (`CLAUDE.md`, `openspec/specs/README.md`, `openspec/config.yaml`) are rarely a problem. At 4-6 people with parallel archives, concurrent writes cause merge conflicts and become a bottleneck. The fix: archive only ever touches per-capability files.
+
+### CLAUDE.md structure
+
+CLAUDE.md becomes a short, stable index. It is **not updated at archive time**.
+
+```markdown
+# CLAUDE.md
+
+## Project Context
+[Short project description — rarely changes]
+
+## Capability Pitfalls
+Pitfalls stored per capability. Read the relevant file during apply:
+- auth: openspec/specs/auth/pitfalls.md
+- payment: openspec/specs/payment/pitfalls.md
+- notifications: openspec/specs/notifications/pitfalls.md
+
+## Global Pitfalls
+[Cross-cutting pitfalls only. Keep < 5 entries. Overflow moves to maintenance PR.]
+```
+
+### Per-capability pitfalls file
+
+Created at first archive of a capability. Updated at every subsequent archive of that capability. Different capabilities = different files = parallel archives never conflict.
+
+```
+openspec/specs/<capability>/pitfalls.md
+```
+
+```markdown
+# Auth Pitfalls
+
+- Token refresh race: lock mutex before checking expiry (eval-log attempt 2, 2026-05-20)
+- JWT secret rotation requires process restart — env var change alone not enough
+```
+
+### openspec/specs/README.md
+
+Updated **only when a new capability is created** — this happens in the spec PR (large track), not at archive time. Updating an existing capability never touches README.md; the capability's own `spec.md` Purpose section is the source of truth.
+
+### openspec/config.yaml
+
+Changes (new test command, new e2e command, stack changes) are infrequent and go through a dedicated `chore: config-update` PR. Never tied to a feature archive.
+
+### Maintenance PR cadence
+
+| Trigger | Contents | Review |
+|---------|----------|--------|
+| CLAUDE.md Global Pitfalls approaches 5 entries | Consolidate: entries with a clear capability home move to that capability's pitfalls.md; truly cross-cutting entries stay | 1 approval, no CI dependency |
+| Sprint end | Verify CLAUDE.md index lists all capabilities added this sprint | 1 approval |
+| config.yaml change needed | Standalone `chore: config-update` PR | 1 approval |
+
+Global Pitfalls entries accumulate only when a pitfall has no clear capability home (genuinely cross-cutting). Most pitfalls have a home and go directly to per-capability files at archive time — the Global section grows slowly by design.
+
+Any engineer can open a maintenance PR. Not tied to feature work.
+
+### Result
+
+Simultaneous archives from multiple engineers produce zero shared-file conflicts:
+- Each writes to `openspec/specs/<their-cap>/pitfalls.md` — different files
+- Each writes to `openspec/specs/<their-cap>/spec.md` — different files  
+- CLAUDE.md, README.md, config.yaml untouched at archive time
+
+---
+
 ## Summary: Agile Mapping
 
 The explore → propose → apply → archive flow maps directly onto agile:
@@ -267,4 +356,4 @@ The explore → propose → apply → archive flow maps directly onto agile:
 | Sprint execution | apply (TDD + eval harness) |
 | Sprint review + retro | archive (capability spec + CLAUDE.md pitfalls) |
 
-Velocity metric shifts from "story points completed" to "capability specs archived + CI green."
+Velocity metric shifts from "story points completed" to "capability specs archived this sprint + CI green." Count is absolute (e.g., 3 capabilities archived this sprint), not a ratio.
