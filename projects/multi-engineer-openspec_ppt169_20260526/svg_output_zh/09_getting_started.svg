@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="card1Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4F8EF7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#4F8EF7" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="card2Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.03"/>
+    </linearGradient>
+    <linearGradient id="card3Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <!-- Title -->
+  <rect x="64" y="36" width="4" height="48" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="68" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="44" font-weight="700" fill="url(#titleGrad)">从这里开始</text>
+  <text x="84" y="104" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="18" fill="#94A3B8">三个行动，让您的下一个功能采用 OpenSpec 工作流</text>
+
+  <!-- Card 1: Explore -->
+  <rect x="64" y="128" width="360" height="432" rx="12" fill="url(#card1Grad)" stroke="#4F8EF7" stroke-width="2"/>
+  <circle cx="144" cy="196" r="40" fill="#4F8EF7" fill-opacity="0.15" stroke="#4F8EF7" stroke-width="1.5"/>
+  <text x="144" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="32" font-weight="700" fill="#4F8EF7">1</text>
+  <text x="280" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="52">🔍</text>
+  <rect x="88" y="248" width="312" height="2" fill="#2D3748"/>
+  <text x="244" y="284" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="20" font-weight="700" fill="#4F8EF7">运行 /opsx:explore</text>
+  <text x="244" y="318" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#E2E8F0">在编写任何代码之前。</text>
+  <text x="244" y="342" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#E2E8F0">就在您的下一个功能上。</text>
+  <text x="244" y="378" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">将粗略想法转化为已评审的</text>
+  <text x="244" y="398" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">requirements.md，状态为 REVIEWED</text>
+  <rect x="88" y="424" width="312" height="48" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="244" y="448" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#34D399">/opsx:explore auth-refactor</text>
+  <text x="244" y="504" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#64748B">今天开始。无例外。</text>
+
+  <!-- Card 2: Spec PR -->
+  <rect x="460" y="128" width="360" height="432" rx="12" fill="url(#card2Grad)" stroke="#818CF8" stroke-width="2"/>
+  <circle cx="540" cy="196" r="40" fill="#818CF8" fill-opacity="0.15" stroke="#818CF8" stroke-width="1.5"/>
+  <text x="540" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="32" font-weight="700" fill="#818CF8">2</text>
+  <text x="680" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="52">📋</text>
+  <rect x="484" y="248" width="312" height="2" fill="#2D3748"/>
+  <text x="640" y="279" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="20" font-weight="700" fill="#818CF8">先开规范 PR</text>
+  <text x="640" y="309" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">大型功能（≥3 天 / 架构）</text>
+  <text x="640" y="342" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#E2E8F0">在任何代码之前锁定规范。</text>
+  <text x="640" y="366" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#E2E8F0">PR1 = 规范评审门控。</text>
+  <text x="640" y="402" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">PR1 合并后 tasks.md + design.md</text>
+  <text x="640" y="422" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">冻结</text>
+  <rect x="484" y="448" width="312" height="48" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="640" y="466" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="12" fill="#818CF8">spec/auth-refactor → PR1</text>
+  <text x="640" y="504" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#64748B">小型功能：直接跳到执行。</text>
+
+  <!-- Card 3: Harness -->
+  <rect x="856" y="128" width="360" height="432" rx="12" fill="url(#card3Grad)" stroke="#34D399" stroke-width="2"/>
+  <circle cx="936" cy="196" r="40" fill="#34D399" fill-opacity="0.15" stroke="#34D399" stroke-width="1.5"/>
+  <text x="936" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="32" font-weight="700" fill="#34D399">3</text>
+  <text x="1076" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="52">⚙️</text>
+  <rect x="880" y="248" width="312" height="2" fill="#2D3748"/>
+  <text x="1036" y="279" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="20" font-weight="700" fill="#34D399">让 harness 驱动执行</text>
+  <text x="1036" y="309" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">TDD + 评测子代理运行</text>
+  <text x="1036" y="342" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#E2E8F0">审查规范保真度，而非代码。</text>
+  <text x="1036" y="366" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#E2E8F0">你判断意图。Claude 构建。</text>
+  <text x="1036" y="402" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">问："Claude 构建的是</text>
+  <text x="1036" y="422" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">正确的东西吗？"</text>
+  <rect x="880" y="448" width="312" height="48" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="1036" y="466" text-anchor="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#34D399">/opsx:apply auth-refactor</text>
+  <text x="1036" y="504" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#64748B">然后：/opsx:archive 达成。</text>
+
+  <!-- Bottom achieve callout -->
+  <rect x="64" y="584" width="1152" height="64" rx="8" fill="#1C1F2E" stroke="#34D399" stroke-width="1.5"/>
+  <text x="640" y="608" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">达成 =</text>
+  <text x="640" y="608" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#34D399">        归档 ✓  +  CI 绿色 ✓  +  PR 合并 ✓</text>
+  <text x="640" y="634" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#64748B">opsx-superpowers · 四个阶段 · 零跳过门控 · 规范质量 = 交付质量</text>
+
+  <!-- Slide number -->
+  <text x="1216" y="700" text-anchor="end" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#64748B">9 / 11</text>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <!-- Title -->
+  <rect x="64" y="36" width="4" height="36" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="60" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">并行归档，无冲突</text>
+  <text x="84" y="88" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="16" fill="#94A3B8">共享文件在规模化时成为写入瓶颈 — 对其进行分解</text>
+
+  <!-- BEFORE box -->
+  <rect x="64" y="108" width="540" height="492" rx="12" fill="#1C1F2E" stroke="#F87171" stroke-width="1.5"/>
+  <!-- Before header -->
+  <rect x="64" y="108" width="540" height="44" rx="12" fill="#F87171" fill-opacity="0.12"/>
+  <rect x="64" y="136" width="540" height="16" fill="#F87171" fill-opacity="0.12"/>
+  <text x="334" y="132" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="17" font-weight="700" fill="#F87171">⚠️ 之前 — 单体共享文件</text>
+
+  <!-- Before: file tree -->
+  <text x="96" y="178" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#94A3B8">openspec/</text>
+
+  <!-- CLAUDE.md with conflict marker -->
+  <rect x="88" y="192" width="484" height="56" rx="6" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="1"/>
+  <text x="116" y="214" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#E2E8F0">├── CLAUDE.md</text>
+  <text x="116" y="234" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#F87171">    ⚡ 工程师 A + B + C 在归档时均写入此处</text>
+
+  <!-- specs/README.md with conflict marker -->
+  <rect x="88" y="258" width="484" height="56" rx="6" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="1"/>
+  <text x="116" y="280" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#E2E8F0">├── specs/README.md</text>
+  <text x="116" y="300" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#F87171">    ⚡ 所有人同时更新规范索引</text>
+
+  <text x="116" y="336" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#64748B">└── config.yaml</text>
+
+  <!-- Problems callout -->
+  <rect x="88" y="356" width="484" height="136" rx="8" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="108" y="378" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F87171">4-6 名工程师时的问题：</text>
+  <text x="116" y="400" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• 3+ 名工程师同时归档 → 合并冲突</text>
+  <text x="116" y="422" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• CLAUDE.md 无限增长 → 上下文噪音</text>
+  <text x="116" y="444" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• config.yaml 写入 = 需要专门的 PR</text>
+  <text x="116" y="466" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• 归档成为串行瓶颈</text>
+
+  <!-- Conflict explosion graphic -->
+  <text x="334" y="528" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="40">💥</text>
+  <text x="334" y="570" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#F87171">归档时冲突</text>
+
+  <!-- Arrow between before/after -->
+  <line x1="612" y1="354" x2="666" y2="354" stroke="#4F8EF7" stroke-width="2.5"/>
+  <polygon points="661,348 674,354 661,360" fill="#4F8EF7"/>
+
+  <!-- AFTER box -->
+  <rect x="676" y="108" width="540" height="492" rx="12" fill="#1C1F2E" stroke="#34D399" stroke-width="1.5"/>
+  <!-- After header -->
+  <rect x="676" y="108" width="540" height="44" rx="12" fill="#34D399" fill-opacity="0.12"/>
+  <rect x="676" y="136" width="540" height="16" fill="#34D399" fill-opacity="0.12"/>
+  <text x="946" y="132" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="17" font-weight="700" fill="#34D399">✅ 之后 — 按能力分解</text>
+
+  <!-- After: file tree -->
+  <text x="708" y="178" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#94A3B8">openspec/</text>
+
+  <!-- CLAUDE.md as index -->
+  <rect x="700" y="192" width="484" height="44" rx="6" fill="#34D399" fill-opacity="0.06" stroke="#34D399" stroke-width="1"/>
+  <text x="728" y="208" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#34D399">├── CLAUDE.md</text>
+  <text x="728" y="226" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#94A3B8">    仅索引 — 每个能力 2 行指针</text>
+
+  <!-- capabilities/ tree -->
+  <text x="728" y="254" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#E2E8F0">├── capabilities/</text>
+
+  <rect x="700" y="264" width="484" height="36" rx="4" fill="#4F8EF7" fill-opacity="0.06" stroke="#4F8EF7" stroke-width="0.5"/>
+  <text x="748" y="282" font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#4F8EF7">│   ├── auth/pitfalls.md</text>
+  <text x="948" y="282" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="11" fill="#64748B">← 仅 auth 工程师</text>
+
+  <rect x="700" y="306" width="484" height="36" rx="4" fill="#818CF8" fill-opacity="0.06" stroke="#818CF8" stroke-width="0.5"/>
+  <text x="748" y="324" font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#818CF8">│   ├── billing/pitfalls.md</text>
+  <text x="948" y="324" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="11" fill="#64748B">← billing 工程师</text>
+
+  <rect x="700" y="348" width="484" height="36" rx="4" fill="#34D399" fill-opacity="0.06" stroke="#34D399" stroke-width="0.5"/>
+  <text x="748" y="366" font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#34D399">│   └── api/pitfalls.md</text>
+  <text x="948" y="366" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="11" fill="#64748B">← api 工程师</text>
+
+  <text x="728" y="402" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#64748B">└── config.yaml</text>
+
+  <!-- Solution callout -->
+  <rect x="700" y="416" width="484" height="100" rx="8" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="720" y="438" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="600" fill="#34D399">解决规则：</text>
+  <text x="728" y="458" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• 归档 → 仅写入自己的能力文件</text>
+  <text x="728" y="478" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• CLAUDE.md 更新 → 专用维护 PR</text>
+  <text x="728" y="498" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">• 全局陷阱 → 在每周/冲刺 PR 中批量处理</text>
+
+  <!-- No conflict check mark -->
+  <text x="946" y="548" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="40">✅</text>
+  <text x="946" y="580" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#34D399">并行归档，零冲突</text>
+
+  <!-- Bottom banner -->
+  <rect x="64" y="624" width="1152" height="44" rx="8" fill="#1C1F2E" stroke="#2D3748" stroke-width="1"/>
+  <text x="640" y="646" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#E2E8F0">CLAUDE.md 保持在 200 行以内 · 全局陷阱 → 每次冲刺维护 PR</text>
+
+  <!-- Slide number -->
+  <text x="1216" y="700" text-anchor="end" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#64748B">8 / 11</text>
+</svg>

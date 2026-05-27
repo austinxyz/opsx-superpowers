@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <rect x="64" y="36" width="4" height="36" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="60" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">双轨分支策略</text>
+
+  <rect x="520" y="96" width="240" height="52" rx="26" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="2"/>
+  <text x="640" y="122" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">🚀 新主题</text>
+
+  <line x1="640" y1="148" x2="640" y2="176" stroke="#4F8EF7" stroke-width="2"/>
+
+  <polygon points="640,176 760,220 640,264 520,220" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="2"/>
+  <text x="640" y="214" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#E2E8F0">小型</text>
+  <text x="640" y="232" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#E2E8F0">还是大型？</text>
+
+  <line x1="520" y1="220" x2="280" y2="220" stroke="#4F8EF7" stroke-width="2"/>
+  <line x1="280" y1="220" x2="280" y2="280" stroke="#4F8EF7" stroke-width="2"/>
+  <text x="400" y="208" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">≤2天 · 单模块</text>
+
+  <line x1="760" y1="220" x2="980" y2="220" stroke="#818CF8" stroke-width="2"/>
+  <line x1="980" y1="220" x2="980" y2="280" stroke="#818CF8" stroke-width="2"/>
+  <text x="870" y="208" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">≥3天 · 架构 · 跨模块</text>
+
+  <!-- SMALL TRACK -->
+  <text x="280" y="268" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="600" fill="#4F8EF7">小型轨道</text>
+
+  <rect x="148" y="280" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1.5"/>
+  <text x="280" y="302" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="15" fill="#4F8EF7">feat/&lt;topic&gt;</text>
+  <line x1="280" y1="324" x2="280" y2="356" stroke="#4F8EF7" stroke-width="2"/>
+
+  <rect x="148" y="356" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#34D399" stroke-width="1.5"/>
+  <text x="280" y="378" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#34D399">⚙️ 执行（TDD + 评测）</text>
+  <line x1="280" y1="400" x2="280" y2="432" stroke="#34D399" stroke-width="2"/>
+
+  <rect x="148" y="432" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="280" y="454" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#F59E0B">📦 在分支上归档</text>
+  <line x1="280" y1="476" x2="280" y2="508" stroke="#F59E0B" stroke-width="2"/>
+
+  <rect x="148" y="508" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#818CF8" stroke-width="1.5"/>
+  <text x="280" y="530" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#818CF8">👥 1 PR — 规范 + 代码</text>
+  <line x1="280" y1="552" x2="280" y2="584" stroke="#818CF8" stroke-width="2"/>
+
+  <rect x="164" y="584" width="232" height="48" rx="24" fill="#34D399" fill-opacity="0.2" stroke="#34D399" stroke-width="2"/>
+  <text x="280" y="608" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="17" font-weight="700" fill="#34D399">🎯 达成</text>
+
+  <rect x="76" y="268" width="420" height="388" rx="12" fill="none" stroke="#4F8EF7" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- LARGE TRACK -->
+  <text x="980" y="268" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="600" fill="#818CF8">大型轨道</text>
+
+  <rect x="848" y="280" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#818CF8" stroke-width="1.5"/>
+  <text x="980" y="302" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#818CF8">spec/&lt;topic&gt; branch</text>
+  <line x1="980" y1="324" x2="980" y2="356" stroke="#818CF8" stroke-width="2"/>
+
+  <rect x="848" y="356" width="264" height="44" rx="8" fill="#818CF8" fill-opacity="0.15" stroke="#818CF8" stroke-width="1.5"/>
+  <text x="980" y="378" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" fill="#818CF8">👥 PR1 — 规范评审</text>
+  <line x1="980" y1="400" x2="980" y2="432" stroke="#818CF8" stroke-width="2"/>
+
+  <rect x="848" y="432" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1.5"/>
+  <text x="980" y="454" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, Consolas, monospace" font-size="14" fill="#4F8EF7">feat/&lt;topic&gt; branch</text>
+  <line x1="980" y1="476" x2="980" y2="508" stroke="#4F8EF7" stroke-width="2"/>
+
+  <rect x="848" y="508" width="264" height="44" rx="8" fill="#1C1F2E" stroke="#34D399" stroke-width="1.5"/>
+  <text x="980" y="530" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#34D399">⚙️ 执行 + 📦 归档</text>
+  <line x1="980" y1="552" x2="980" y2="584" stroke="#34D399" stroke-width="2"/>
+
+  <rect x="848" y="584" width="264" height="44" rx="8" fill="#4F8EF7" fill-opacity="0.15" stroke="#4F8EF7" stroke-width="1.5"/>
+  <text x="980" y="606" text-anchor="middle" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#4F8EF7">👥 PR2 — 实现评审 → 🎯</text>
+
+  <rect x="776" y="268" width="420" height="388" rx="12" fill="none" stroke="#818CF8" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <rect x="64" y="668" width="720" height="36" rx="6" fill="#1C1F2E" stroke="#2D3748" stroke-width="1"/>
+  <text x="80" y="686" dominant-baseline="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">PR1 锁定规范 — 执行阶段中 tasks.md 和 design.md 不得更改</text>
+
+  <text x="1216" y="700" text-anchor="end" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#64748B">4 / 11</text>
+</svg>
