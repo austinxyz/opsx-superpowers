@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <!-- Title -->
+  <rect x="64" y="36" width="4" height="40" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="64" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">人工审查规范，CI 审查代码</text>
+
+  <!-- Left column: Spec Review -->
+  <rect x="64" y="100" width="548" height="480" rx="12" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="2"/>
+
+  <!-- Left header -->
+  <rect x="64" y="100" width="548" height="72" rx="12" fill="#4F8EF7" fill-opacity="0.15"/>
+  <rect x="64" y="148" width="548" height="24" fill="#4F8EF7" fill-opacity="0.15"/>
+  <text x="338" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="22" font-weight="700" fill="#4F8EF7">👥 规范评审</text>
+  <text x="338" y="162" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">高标准 · 15–30 分钟 · 任何团队成员均可评审</text>
+
+  <!-- Left items -->
+  <text x="100" y="210" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#94A3B8">焦点："我们定义的是正确的东西吗？"</text>
+
+  <rect x="88" y="228" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="108" y="253" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">🎯 意图</text>
+  <text x="108" y="273" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">这个规范解决了正确的问题吗？</text>
+
+  <rect x="88" y="300" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="108" y="325" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">✂️ 分解</text>
+  <text x="108" y="345" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">范围正确吗？能否更小？</text>
+
+  <rect x="88" y="372" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="108" y="397" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">📋 CONTRACT 块</text>
+  <text x="108" y="417" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">接口和不变量是否已定义？</text>
+
+  <rect x="88" y="444" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="108" y="469" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">🔍 完整性</text>
+  <text x="108" y="489" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">边缘情况、错误路径、已知陷阱？</text>
+
+  <!-- Left footer note -->
+  <text x="338" y="545" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#4F8EF7">⛔ CRITICAL 或 HIGH 发现时阻止</text>
+  <text x="338" y="565" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">大型功能：PR1 规范评审先于任何代码</text>
+
+  <!-- Arrow between columns -->
+  <line x1="620" y1="340" x2="660" y2="340" stroke="#2D3748" stroke-width="2"/>
+  <polygon points="655,334 668,340 655,346" fill="#2D3748"/>
+
+  <!-- Right column: Code Review -->
+  <rect x="668" y="100" width="548" height="480" rx="12" fill="#1C1F2E" stroke="#34D399" stroke-width="2"/>
+
+  <!-- Right header -->
+  <rect x="668" y="100" width="548" height="72" rx="12" fill="#34D399" fill-opacity="0.12"/>
+  <rect x="668" y="148" width="548" height="24" fill="#34D399" fill-opacity="0.12"/>
+  <text x="942" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="22" font-weight="700" fill="#34D399">🤖 代码审查</text>
+  <text x="942" y="162" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#94A3B8">轻量级 · 5 分钟 · 验证，不重新审查</text>
+
+  <!-- Right items -->
+  <text x="704" y="210" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#94A3B8">焦点："Claude 构建的是正确的吗？"</text>
+
+  <rect x="692" y="228" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="712" y="253" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅ CI 绿色？</text>
+  <text x="712" y="273" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">所有构建、测试、E2E 在 PR 上通过</text>
+
+  <rect x="692" y="300" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="712" y="325" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅ 所有评测通过？</text>
+  <text x="712" y="345" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">eval-log.md 无 CRITICAL / HIGH 发现</text>
+
+  <rect x="692" y="372" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="712" y="397" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅ 规范意图匹配？</text>
+  <text x="712" y="417" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">对照规范中的 CONTRACT 块浏览差异</text>
+
+  <rect x="692" y="444" width="508" height="60" rx="6" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="712" y="469" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅ 归档就绪？</text>
+  <text x="712" y="489" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#94A3B8">pitfalls.md 已写，CLAUDE.md 索引已更新</text>
+
+  <!-- Right footer note -->
+  <text x="942" y="545" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#34D399">评测子代理已审查代码</text>
+  <text x="942" y="565" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">你验证意图 — 而非逐行代码逻辑</text>
+
+  <!-- Bottom callout -->
+  <rect x="64" y="608" width="1152" height="52" rx="8" fill="#1C1F2E" stroke="#2D3748" stroke-width="1"/>
+  <text x="640" y="634" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="15" font-style="italic" fill="#E2E8F0">"速度不再是约束。规范质量与判断力才是瓶颈。"</text>
+
+  <!-- Slide number -->
+  <text x="1216" y="700" text-anchor="end" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#64748B">7 / 11</text>
+</svg>

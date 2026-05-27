@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+    <linearGradient id="passGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="failGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F87171" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#F87171" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <!-- Title -->
+  <rect x="64" y="36" width="4" height="48" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="68" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="40" font-weight="700" fill="url(#titleGrad)">Jenkins DoD 门控</text>
+  <text x="84" y="100" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="16" fill="#94A3B8">opsx archive 运行四项检查 — 所有检查通过后 JIRA 才能转为 Done</text>
+
+  <!-- LEFT PANEL: Jenkinsfile skeleton -->
+  <rect x="64" y="120" width="540" height="520" rx="10" fill="#131820" stroke="#2D3748" stroke-width="1.5"/>
+  <text x="84" y="148" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="600" fill="#64748B" letter-spacing="1">JENKINSFILE</text>
+
+  <!-- Code block -->
+  <rect x="80" y="160" width="508" height="464" rx="6" fill="#0B0F16" stroke="#1E2533" stroke-width="1"/>
+
+  <text x="96" y="183" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#64748B">// TOPIC 自动从分支名或显式参数推导</text>
+  <text x="96" y="203" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">pipeline {</text>
+  <text x="96" y="221" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">  parameters {</text>
+  <text x="96" y="239" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">    string(name: <tspan fill="#34D399">'TOPIC'</tspan>, defaultValue: <tspan fill="#34D399">''</tspan>)</text>
+  <text x="96" y="257" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">  }</text>
+  <text x="96" y="275" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">  environment {</text>
+  <text x="96" y="293" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">    JIRA_TOKEN    = credentials(<tspan fill="#34D399">'jira-api-token'</tspan>)</text>
+  <text x="96" y="311" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">    JIRA_BASE_URL = <tspan fill="#34D399">'https://yourco.atlassian.net'</tspan></text>
+  <text x="96" y="329" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">    JIRA_USER     = <tspan fill="#34D399">'ci-bot@yourco.com'</tspan></text>
+  <text x="96" y="347" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">  }</text>
+  <text x="96" y="369" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">  stages {</text>
+
+  <!-- apply stage -->
+  <rect x="100" y="376" width="472" height="56" rx="4" fill="#1A2030" stroke="#4F8EF7" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="112" y="394" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#4F8EF7">    stage(<tspan fill="#34D399">'apply'</tspan>) {  when { branch <tspan fill="#34D399">'feat/*'</tspan> }</text>
+  <text x="112" y="412" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">      TOPIC = params.TOPIC ?: BRANCH_NAME - <tspan fill="#34D399">'feat/'</tspan></text>
+  <text x="112" y="428" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">      steps { sh <tspan fill="#34D399">'opsx apply $TOPIC'</tspan> }  }</text>
+
+  <!-- test stage -->
+  <rect x="100" y="440" width="472" height="38" rx="4" fill="#1A2030" stroke="#818CF8" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="112" y="457" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#818CF8">    stage(<tspan fill="#34D399">'test'</tspan>) {</text>
+  <text x="112" y="473" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">      steps { sh <tspan fill="#34D399">'make test'</tspan>;  sh <tspan fill="#34D399">'make e2e'</tspan> }  }</text>
+
+  <!-- archive stage (highlighted) -->
+  <rect x="100" y="486" width="472" height="62" rx="4" fill="#142010" stroke="#34D399" stroke-width="1.5"/>
+  <text x="112" y="503" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#34D399">    stage(<tspan fill="#34D399">'archive'</tspan>) {  when { branch <tspan fill="#34D399">'main'</tspan> }</text>
+  <text x="112" y="521" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">      JENKINS_BUILD_STATUS = currentBuild.result</text>
+  <text x="112" y="539" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">      PR_MERGED = <tspan fill="#34D399">'true'</tspan></text>
+  <text x="112" y="557" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">      steps { sh <tspan fill="#34D399">'opsx archive $TOPIC'</tspan> }  }  }  }</text>
+
+  <text x="96" y="598" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#64748B">↑  opsx archive 内部调用 jira_hook.py</text>
+  <text x="96" y="614" font-family="JetBrains Mono, Consolas, monospace" font-size="11" fill="#64748B">   Jenkins 仅设置环境变量 + 运行 opsx 命令</text>
+
+  <!-- RIGHT PANEL: DoD 4-check gate -->
+  <rect x="624" y="120" width="592" height="520" rx="10" fill="#131820" stroke="#2D3748" stroke-width="1.5"/>
+  <text x="644" y="148" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="600" fill="#64748B" letter-spacing="1">DoD 门控 — opsx archive</text>
+
+  <!-- Check 1: eval-log -->
+  <rect x="640" y="160" width="560" height="88" rx="8" fill="#0B0F16" stroke="#2D3748" stroke-width="1"/>
+  <rect x="640" y="160" width="4" height="88" fill="#F59E0B" rx="2"/>
+  <text x="662" y="184" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="700" fill="#F59E0B">① eval-log.md</text>
+  <text x="662" y="204" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">grep "CRITICAL\|HIGH" eval-log.md → exit 1 if found</text>
+  <text x="662" y="222" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">通过：无 CRITICAL 或 HIGH 发现</text>
+  <text x="662" y="238" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">MEDIUM / LOW → 仅警告，不阻止</text>
+
+  <!-- Check 2: CI green -->
+  <rect x="640" y="258" width="560" height="72" rx="8" fill="#0B0F16" stroke="#2D3748" stroke-width="1"/>
+  <rect x="640" y="258" width="4" height="72" fill="#4F8EF7" rx="2"/>
+  <text x="662" y="282" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="700" fill="#4F8EF7">② CI 绿色</text>
+  <text x="662" y="302" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">$JENKINS_BUILD_STATUS == SUCCESS</text>
+  <text x="662" y="320" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">通过：上一个测试阶段退出码为 0</text>
+
+  <!-- Check 3: PR merged -->
+  <rect x="640" y="340" width="560" height="72" rx="8" fill="#0B0F16" stroke="#2D3748" stroke-width="1"/>
+  <rect x="640" y="340" width="4" height="72" fill="#818CF8" rx="2"/>
+  <text x="662" y="364" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="700" fill="#818CF8">③ PR 已合并</text>
+  <text x="662" y="384" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">git branch --show-current == main  OR  $PR_MERGED</text>
+  <text x="662" y="402" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">通过：归档在合并后的 main 分支上运行</text>
+
+  <!-- Check 4: archive files -->
+  <rect x="640" y="422" width="560" height="72" rx="8" fill="#0B0F16" stroke="#2D3748" stroke-width="1"/>
+  <rect x="640" y="422" width="4" height="72" fill="#34D399" rx="2"/>
+  <text x="662" y="446" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" font-weight="700" fill="#34D399">④ 归档文件</text>
+  <text x="662" y="466" font-family="JetBrains Mono, Consolas, monospace" font-size="11.5" fill="#94A3B8">test -f pitfalls.md  &amp;&amp;  grep "DONE" spec.md</text>
+  <text x="662" y="484" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#64748B">通过：pitfalls.md 存在 + spec.md 具有 DONE 状态</text>
+
+  <!-- Outcome: PASS -->
+  <rect x="640" y="506" width="268" height="64" rx="8" fill="url(#passGrad)" stroke="#34D399" stroke-width="1.5"/>
+  <text x="774" y="531" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="700" fill="#34D399">全部通过</text>
+  <text x="774" y="551" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#94A3B8">JIRA → Done + 远程链接已添加</text>
+  <text x="774" y="567" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="11" fill="#64748B">exit 0</text>
+
+  <!-- Outcome: FAIL -->
+  <rect x="924" y="506" width="276" height="64" rx="8" fill="url(#failGrad)" stroke="#F87171" stroke-width="1.5"/>
+  <text x="1062" y="531" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" font-weight="700" fill="#F87171">任一失败</text>
+  <text x="1062" y="551" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#94A3B8">JIRA → Blocked + 评论已发布</text>
+  <text x="1062" y="567" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="11" fill="#64748B">exit 1 — Jenkins 阶段失败</text>
+
+  <!-- Divider between outcomes -->
+  <line x1="908" y1="510" x2="908" y2="566" stroke="#2D3748" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Bottom bar -->
+  <rect x="64" y="638" width="1152" height="62" rx="8" fill="#1C1F2E" stroke="#2D3748" stroke-width="1"/>
+  <text x="640" y="660" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="13" fill="#64748B">JIRA API 错误（exit 2）为<tspan fill="#F59E0B">非致命</tspan> — 流水线继续。DoD 失败（exit 1）<tspan fill="#F87171">仅在归档阶段致命</tspan> — 其他阶段不因 JIRA 状态阻止。</text>
+  <text x="640" y="685" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="12" fill="#475569">本地开发：无 JIRA_TOKEN 或无 jira_key → hook 静默退出 0。本地使用 OpenSpec 无需任何配置。</text>
+
+  <!-- Slide number -->
+  <text x="1216" y="714" text-anchor="end" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="14" fill="#64748B">11 / 11</text>
+</svg>

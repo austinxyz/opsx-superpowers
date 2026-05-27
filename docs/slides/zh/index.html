@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>多工程师 OpenSpec 工作流</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0d13; color: #E2E8F0; font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif; height: 100vh; display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; background: #0F1117; border-bottom: 1px solid #1E2533; flex-shrink: 0; }
+  header h1 { font-size: 15px; color: #94A3B8; }
+  header a { color: #64748B; text-decoration: none; font-size: 13px; }
+  header a:hover { color: #94A3B8; }
+  .slide-area { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px; min-height: 0; }
+  .slide-img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 32px rgba(0,0,0,0.6); }
+  footer { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 12px 20px; background: #0F1117; border-top: 1px solid #1E2533; flex-shrink: 0; }
+  button { background: #1C1F2E; border: 1px solid #2D3748; color: #E2E8F0; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; transition: background 0.15s; }
+  button:hover:not(:disabled) { background: #2D3748; }
+  button:disabled { opacity: 0.3; cursor: default; }
+  .counter { font-size: 14px; color: #64748B; min-width: 60px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>多工程师 OpenSpec 工作流</h1>
+  <a href="../en/">English →</a>
+</header>
+<div class="slide-area">
+  <img id="slide" class="slide-img" src="01_cover.svg" alt="第 1 页">
+</div>
+<footer>
+  <button id="prev" onclick="go(-1)" disabled>← 上一页</button>
+  <span class="counter" id="counter">1 / 11</span>
+  <button id="next" onclick="go(1)">下一页 →</button>
+</footer>
+<script>
+const slides = [
+  "01_cover.svg",
+  "02_the_shift.svg",
+  "03_four_phases.svg",
+  "04_two_track.svg",
+  "05_achieve_gate.svg",
+  "06_parallel_dev.svg",
+  "07_review_model.svg",
+  "08_shared_files.svg",
+  "09_getting_started.svg",
+  "10_jira_lifecycle.svg",
+  "11_jenkins_dod.svg"
+];
+let cur = 0;
+function go(d) {
+  cur = Math.max(0, Math.min(slides.length - 1, cur + d));
+  document.getElementById("slide").src = slides[cur];
+  document.getElementById("counter").textContent = (cur + 1) + " / " + slides.length;
+  document.getElementById("prev").disabled = cur === 0;
+  document.getElementById("next").disabled = cur === slides.length - 1;
+}
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight" || e.key === "ArrowDown") go(1);
+  if (e.key === "ArrowLeft" || e.key === "ArrowUp") go(-1);
+});
+</script>
+</body>
+</html>
