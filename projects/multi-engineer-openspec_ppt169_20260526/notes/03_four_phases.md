@@ -1,0 +1,1 @@
+Each phase has hard entry gates and produces a specific output artifact that the next phase consumes. You cannot start Apply without reviewed requirements and a locked spec. The ⛔ GATE indicators are not suggestions — they are enforced by the harness and tooling.

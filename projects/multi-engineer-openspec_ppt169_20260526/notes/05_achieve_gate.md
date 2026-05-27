@@ -1,0 +1,1 @@
+Completing apply is not the same as achieving the feature. Four gates must clear in order: local eval passes, CI is green, a human verifies spec fidelity, and archive captures the learning. PR merge to main is the moment of Achieve — not when code compiles.

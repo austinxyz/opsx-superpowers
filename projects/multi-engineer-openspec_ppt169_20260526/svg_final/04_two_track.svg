@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117" />
+
+  
+  <path fill="url(#titleGrad)" d="M66,36 H66 A2,2 0 0 1 68,38 V70 A2,2 0 0 1 66,72 H66 A2,2 0 0 1 64,70 V38 A2,2 0 0 1 66,36 Z" />
+  <text x="84" y="60" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">Two-Track Branch Strategy</text>
+
+  
+  <path fill="#1C1F2E" stroke="#4F8EF7" stroke-width="2" d="M546,96 H734 A26,26 0 0 1 760,122 V122 A26,26 0 0 1 734,148 H546 A26,26 0 0 1 520,122 V122 A26,26 0 0 1 546,96 Z" />
+  <text x="640" y="122" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">🚀 New Topic</text>
+
+  
+  <line x1="640" y1="148" x2="640" y2="176" stroke="#4F8EF7" stroke-width="2" />
+
+  
+  <polygon points="640,176 760,220 640,264 520,220" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="2" />
+  <text x="640" y="214" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#E2E8F0">Small</text>
+  <text x="640" y="232" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#E2E8F0">or Large?</text>
+
+  
+  <line x1="520" y1="220" x2="280" y2="220" stroke="#4F8EF7" stroke-width="2" />
+  <line x1="280" y1="220" x2="280" y2="280" stroke="#4F8EF7" stroke-width="2" />
+  <text x="400" y="208" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">≤2 days · single module</text>
+
+  
+  <line x1="760" y1="220" x2="980" y2="220" stroke="#818CF8" stroke-width="2" />
+  <line x1="980" y1="220" x2="980" y2="280" stroke="#818CF8" stroke-width="2" />
+  <text x="870" y="208" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">≥3 days · arch · cross-module</text>
+
+  
+  <text x="280" y="268" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#4F8EF7">SMALL TRACK</text>
+
+  
+  <path fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1.5" d="M156,280 H404 A8,8 0 0 1 412,288 V316 A8,8 0 0 1 404,324 H156 A8,8 0 0 1 148,316 V288 A8,8 0 0 1 156,280 Z" />
+  <text x="280" y="302" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, monospace" font-size="15" fill="#4F8EF7">feat/&lt;topic&gt;</text>
+  <line x1="280" y1="324" x2="280" y2="356" stroke="#4F8EF7" stroke-width="2" />
+
+  
+  <path fill="#1C1F2E" stroke="#34D399" stroke-width="1.5" d="M156,356 H404 A8,8 0 0 1 412,364 V392 A8,8 0 0 1 404,400 H156 A8,8 0 0 1 148,392 V364 A8,8 0 0 1 156,356 Z" />
+  <text x="280" y="378" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#34D399">⚙️ Apply (TDD + Eval)</text>
+  <line x1="280" y1="400" x2="280" y2="432" stroke="#34D399" stroke-width="2" />
+
+  
+  <path fill="#1C1F2E" stroke="#F59E0B" stroke-width="1.5" d="M156,432 H404 A8,8 0 0 1 412,440 V468 A8,8 0 0 1 404,476 H156 A8,8 0 0 1 148,468 V440 A8,8 0 0 1 156,432 Z" />
+  <text x="280" y="454" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#F59E0B">📦 Archive on branch</text>
+  <line x1="280" y1="476" x2="280" y2="508" stroke="#F59E0B" stroke-width="2" />
+
+  
+  <path fill="#1C1F2E" stroke="#818CF8" stroke-width="1.5" d="M156,508 H404 A8,8 0 0 1 412,516 V544 A8,8 0 0 1 404,552 H156 A8,8 0 0 1 148,544 V516 A8,8 0 0 1 156,508 Z" />
+  <text x="280" y="530" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#818CF8">👥 1 PR — Spec + Code</text>
+  <line x1="280" y1="552" x2="280" y2="584" stroke="#818CF8" stroke-width="2" />
+
+  
+  <path fill="#34D399" fill-opacity="0.2" stroke="#34D399" stroke-width="2" d="M188,584 H372 A24,24 0 0 1 396,608 V608 A24,24 0 0 1 372,632 H188 A24,24 0 0 1 164,608 V608 A24,24 0 0 1 188,584 Z" />
+  <text x="280" y="608" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" fill="#34D399">🎯 Achieve</text>
+
+  
+  <path fill="none" stroke="#4F8EF7" stroke-width="1" stroke-dasharray="4,4" d="M88,268 H484 A12,12 0 0 1 496,280 V644 A12,12 0 0 1 484,656 H88 A12,12 0 0 1 76,644 V280 A12,12 0 0 1 88,268 Z" />
+
+  
+  <text x="980" y="268" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#818CF8">LARGE TRACK</text>
+
+  
+  <path fill="#1C1F2E" stroke="#818CF8" stroke-width="1.5" d="M856,280 H1104 A8,8 0 0 1 1112,288 V316 A8,8 0 0 1 1104,324 H856 A8,8 0 0 1 848,316 V288 A8,8 0 0 1 856,280 Z" />
+  <text x="980" y="302" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#818CF8">spec/&lt;topic&gt; branch</text>
+  <line x1="980" y1="324" x2="980" y2="356" stroke="#818CF8" stroke-width="2" />
+
+  
+  <path fill="#818CF8" fill-opacity="0.15" stroke="#818CF8" stroke-width="1.5" d="M856,356 H1104 A8,8 0 0 1 1112,364 V392 A8,8 0 0 1 1104,400 H856 A8,8 0 0 1 848,392 V364 A8,8 0 0 1 856,356 Z" />
+  <text x="980" y="378" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#818CF8">👥 PR1 — Spec Review</text>
+  <line x1="980" y1="400" x2="980" y2="432" stroke="#818CF8" stroke-width="2" />
+
+  
+  <path fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1.5" d="M856,432 H1104 A8,8 0 0 1 1112,440 V468 A8,8 0 0 1 1104,476 H856 A8,8 0 0 1 848,468 V440 A8,8 0 0 1 856,432 Z" />
+  <text x="980" y="454" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#4F8EF7">feat/&lt;topic&gt; branch</text>
+  <line x1="980" y1="476" x2="980" y2="508" stroke="#4F8EF7" stroke-width="2" />
+
+  
+  <path fill="#1C1F2E" stroke="#34D399" stroke-width="1.5" d="M856,508 H1104 A8,8 0 0 1 1112,516 V544 A8,8 0 0 1 1104,552 H856 A8,8 0 0 1 848,544 V516 A8,8 0 0 1 856,508 Z" />
+  <text x="980" y="530" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#34D399">⚙️ Apply + 📦 Archive</text>
+  <line x1="980" y1="552" x2="980" y2="584" stroke="#34D399" stroke-width="2" />
+
+  
+  <path fill="#4F8EF7" fill-opacity="0.15" stroke="#4F8EF7" stroke-width="1.5" d="M856,584 H1104 A8,8 0 0 1 1112,592 V620 A8,8 0 0 1 1104,628 H856 A8,8 0 0 1 848,620 V592 A8,8 0 0 1 856,584 Z" />
+  <text x="980" y="606" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#4F8EF7">👥 PR2 — Impl Review → 🎯</text>
+
+  
+  <path fill="none" stroke="#818CF8" stroke-width="1" stroke-dasharray="4,4" d="M788,268 H1184 A12,12 0 0 1 1196,280 V644 A12,12 0 0 1 1184,656 H788 A12,12 0 0 1 776,644 V280 A12,12 0 0 1 788,268 Z" />
+
+  
+  <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M70,668 H778 A6,6 0 0 1 784,674 V698 A6,6 0 0 1 778,704 H70 A6,6 0 0 1 64,698 V674 A6,6 0 0 1 70,668 Z" />
+  <text x="80" y="686" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">PR1 locks spec — tasks.md and design.md do not change during apply</text>
+
+  
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">4 / 9</text>
+</svg>

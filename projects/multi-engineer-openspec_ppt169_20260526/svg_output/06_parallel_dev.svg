@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <!-- Title -->
+  <rect x="64" y="36" width="4" height="40" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="64" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">Conflict Detection at Propose Time</text>
+
+  <!-- Main principle badge -->
+  <rect x="64" y="88" width="1152" height="44" rx="8" fill="#4F8EF7" fill-opacity="0.1" stroke="#4F8EF7" stroke-width="1"/>
+  <text x="640" y="110" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#4F8EF7">Rule: One engineer · one topic · end-to-end — catch conflicts at spec time, not merge time</text>
+
+  <!-- Flow node 1: Propose Phase -->
+  <rect x="420" y="156" width="400" height="56" rx="28" fill="#1C1F2E" stroke="#818CF8" stroke-width="2"/>
+  <text x="620" y="184" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600" fill="#818CF8">📋 Propose Phase</text>
+  <text x="840" y="184" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">new topic starts</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="640" y1="212" x2="640" y2="244" stroke="#4F8EF7" stroke-width="2"/>
+  <polygon points="634,241 640,252 646,241" fill="#4F8EF7"/>
+
+  <!-- Flow node 2: Read active branches -->
+  <rect x="380" y="252" width="520" height="64" rx="8" fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1.5"/>
+  <text x="640" y="276" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">🔍 Read active branches + proposals</text>
+  <text x="640" y="300" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">git branch -r · scan proposal.md + design.md files</text>
+
+  <!-- Arrow 2→diamond -->
+  <line x1="640" y1="316" x2="640" y2="348" stroke="#4F8EF7" stroke-width="2"/>
+  <polygon points="634,345 640,356 646,345" fill="#4F8EF7"/>
+
+  <!-- Diamond: Interface overlap? -->
+  <polygon points="640,356 780,404 640,452 500,404" fill="#1C1F2E" stroke="#F59E0B" stroke-width="2"/>
+  <text x="640" y="396" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#E2E8F0">Interface</text>
+  <text x="640" y="416" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#E2E8F0">overlap?</text>
+
+  <!-- Label YES on left -->
+  <text x="426" y="396" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#F87171">YES</text>
+
+  <!-- Label NO on right -->
+  <text x="856" y="396" text-anchor="start" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#34D399">NO</text>
+
+  <!-- Left branch: YES → Sequence -->
+  <line x1="500" y1="404" x2="240" y2="404" stroke="#F87171" stroke-width="1.5"/>
+  <line x1="240" y1="404" x2="240" y2="488" stroke="#F87171" stroke-width="1.5"/>
+  <polygon points="234,485 240,496 246,485" fill="#F87171"/>
+
+  <!-- Left leaf: Sequence -->
+  <rect x="80" y="496" width="320" height="80" rx="8" fill="#1C1F2E" stroke="#F87171" stroke-width="1.5"/>
+  <text x="240" y="524" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#F87171">🔗 Sequence</text>
+  <text x="240" y="546" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#E2E8F0">Declare depends_on in design.md</text>
+  <text x="240" y="564" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#94A3B8">Wait for interface PR to merge first</text>
+
+  <!-- Right branch: NO → Parallelize -->
+  <line x1="780" y1="404" x2="1040" y2="404" stroke="#34D399" stroke-width="1.5"/>
+  <line x1="1040" y1="404" x2="1040" y2="488" stroke="#34D399" stroke-width="1.5"/>
+  <polygon points="1034,485 1040,496 1046,485" fill="#34D399"/>
+
+  <!-- Right leaf: Parallelize -->
+  <rect x="880" y="496" width="320" height="80" rx="8" fill="#1C1F2E" stroke="#34D399" stroke-width="1.5"/>
+  <text x="1040" y="524" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="700" fill="#34D399">⚡ Parallelize</text>
+  <text x="1040" y="546" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#E2E8F0">No shared interface dependency</text>
+  <text x="1040" y="564" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#94A3B8">Safe to start immediately</text>
+
+  <!-- Bottom key rule -->
+  <rect x="64" y="608" width="1152" height="52" rx="8" fill="#1C1F2E" stroke="#2D3748" stroke-width="1"/>
+  <text x="80" y="634" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">Key rule:</text>
+  <text x="148" y="634" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">Interface must be locked (interface PR merged) before parallel implementation starts</text>
+
+  <!-- Slide number -->
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">6 / 9</text>
+</svg>

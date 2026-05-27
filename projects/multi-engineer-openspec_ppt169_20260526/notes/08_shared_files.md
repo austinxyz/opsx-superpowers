@@ -1,0 +1,1 @@
+At 4–6 engineers, shared files become write bottlenecks. CLAUDE.md and README.md turn into merge conflict magnets when multiple engineers archive in the same sprint. Solution: each capability owns its own pitfalls.md. CLAUDE.md becomes a 2-line index entry per capability. Global pitfalls batch into a dedicated maintenance PR each sprint.

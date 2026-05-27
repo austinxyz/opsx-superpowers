@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+    <linearGradient id="card1Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4F8EF7" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#4F8EF7" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="card2Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="card3Grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0.03" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117" />
+
+  
+  <path fill="url(#titleGrad)" d="M66,36 H66 A2,2 0 0 1 68,38 V82 A2,2 0 0 1 66,84 H66 A2,2 0 0 1 64,82 V38 A2,2 0 0 1 66,36 Z" />
+  <text x="84" y="68" font-family="Inter, system-ui, sans-serif" font-size="44" font-weight="700" fill="url(#titleGrad)">Start Here</text>
+  <text x="84" y="104" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#94A3B8">Three actions to adopt the OpenSpec workflow on your next feature</text>
+
+  
+  <path fill="url(#card1Grad)" stroke="#4F8EF7" stroke-width="2" d="M76,128 H412 A12,12 0 0 1 424,140 V548 A12,12 0 0 1 412,560 H76 A12,12 0 0 1 64,548 V140 A12,12 0 0 1 76,128 Z" />
+  
+  <circle cx="144" cy="196" r="40" fill="#4F8EF7" fill-opacity="0.15" stroke="#4F8EF7" stroke-width="1.5" />
+  <text x="144" y="196" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#4F8EF7">1</text>
+  
+  <text x="280" y="196" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="52">🔍</text>
+  
+  <rect x="88" y="248" width="312" height="2" fill="#2D3748" />
+  
+  <text x="244" y="286" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#4F8EF7">Run /opsx:explore</text>
+  
+  <text x="244" y="320" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#E2E8F0">Before writing any code.</text>
+  <text x="244" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#E2E8F0">On your very next feature.</text>
+  <text x="244" y="380" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Turns rough idea into reviewed</text>
+  <text x="244" y="400" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">requirements.md with status REVIEWED</text>
+  
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M94,424 H394 A6,6 0 0 1 400,430 V466 A6,6 0 0 1 394,472 H94 A6,6 0 0 1 88,466 V430 A6,6 0 0 1 94,424 Z" />
+  <text x="244" y="448" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#34D399">/opsx:explore auth-refactor</text>
+  
+  <text x="244" y="504" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">Today. No exceptions.</text>
+
+  
+  <path fill="url(#card2Grad)" stroke="#818CF8" stroke-width="2" d="M472,128 H808 A12,12 0 0 1 820,140 V548 A12,12 0 0 1 808,560 H472 A12,12 0 0 1 460,548 V140 A12,12 0 0 1 472,128 Z" />
+  <circle cx="540" cy="196" r="40" fill="#818CF8" fill-opacity="0.15" stroke="#818CF8" stroke-width="1.5" />
+  <text x="540" y="196" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#818CF8">2</text>
+  <text x="680" y="196" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="52">📋</text>
+  <rect x="484" y="248" width="312" height="2" fill="#2D3748" />
+  <text x="640" y="281" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#818CF8">Open spec PR first</text>
+  <text x="640" y="311" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">For large features (≥3 days / arch)</text>
+  <text x="640" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#E2E8F0">Lock the spec before any code.</text>
+  <text x="640" y="368" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#E2E8F0">PR1 = spec review gate.</text>
+  <text x="640" y="404" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">tasks.md + design.md frozen</text>
+  <text x="640" y="424" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">after PR1 merges</text>
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M490,448 H790 A6,6 0 0 1 796,454 V490 A6,6 0 0 1 790,496 H490 A6,6 0 0 1 484,490 V454 A6,6 0 0 1 490,448 Z" />
+  <text x="640" y="466" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#818CF8">spec/auth-refactor → PR1 review</text>
+  <text x="640" y="504" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">Small features: skip to apply directly.</text>
+
+  
+  <path fill="url(#card3Grad)" stroke="#34D399" stroke-width="2" d="M868,128 H1204 A12,12 0 0 1 1216,140 V548 A12,12 0 0 1 1204,560 H868 A12,12 0 0 1 856,548 V140 A12,12 0 0 1 868,128 Z" />
+  <circle cx="936" cy="196" r="40" fill="#34D399" fill-opacity="0.15" stroke="#34D399" stroke-width="1.5" />
+  <text x="936" y="196" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#34D399">3</text>
+  <text x="1076" y="196" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="52">⚙️</text>
+  <rect x="880" y="248" width="312" height="2" fill="#2D3748" />
+  <text x="1036" y="281" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="700" fill="#34D399">Let harness drive apply</text>
+  <text x="1036" y="311" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">TDD + evaluator subagent runs</text>
+  <text x="1036" y="344" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#E2E8F0">Review spec fidelity, not code.</text>
+  <text x="1036" y="368" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#E2E8F0">You judge intent. Claude builds.</text>
+  <text x="1036" y="404" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Ask: "Did Claude build</text>
+  <text x="1036" y="424" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">the right thing?"</text>
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M886,448 H1186 A6,6 0 0 1 1192,454 V490 A6,6 0 0 1 1186,496 H886 A6,6 0 0 1 880,490 V454 A6,6 0 0 1 886,448 Z" />
+  <text x="1036" y="466" text-anchor="middle" dominant-baseline="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#34D399">/opsx:apply auth-refactor</text>
+  <text x="1036" y="504" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">Then: /opsx:archive to achieve.</text>
+
+  
+  <path fill="#1C1F2E" stroke="#34D399" stroke-width="1.5" d="M72,584 H1208 A8,8 0 0 1 1216,592 V640 A8,8 0 0 1 1208,648 H72 A8,8 0 0 1 64,640 V592 A8,8 0 0 1 72,584 Z" />
+  <text x="640" y="608" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Achieve =</text>
+  <text x="640" y="608" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#34D399">       archive ✓  +  CI green ✓  +  PR merged ✓</text>
+  <text x="640" y="634" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#64748B">opsx-superpowers · Four phases · Zero skipped gates · Spec quality = delivery quality</text>
+
+  
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">9 / 9</text>
+</svg>

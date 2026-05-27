@@ -1,0 +1,1 @@
+The key to safe parallel development is catching interface conflicts at propose time — before anyone writes code. Read active branches and proposals first. If two features share an interface, declare depends_on and sequence them. If not, parallelize immediately. Merge conflicts are a design smell, not a git problem.

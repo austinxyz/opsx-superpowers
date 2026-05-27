@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117"/>
+
+  <!-- Title -->
+  <rect x="64" y="36" width="4" height="36" fill="url(#titleGrad)" rx="2"/>
+  <text x="84" y="60" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">Archive in Parallel, No Conflicts</text>
+  <text x="84" y="88" font-family="Inter, system-ui, sans-serif" font-size="16" fill="#94A3B8">Shared files become write bottlenecks at scale — decompose them</text>
+
+  <!-- BEFORE box -->
+  <rect x="64" y="108" width="540" height="492" rx="12" fill="#1C1F2E" stroke="#F87171" stroke-width="1.5"/>
+  <!-- Before header -->
+  <rect x="64" y="108" width="540" height="44" rx="12" fill="#F87171" fill-opacity="0.12"/>
+  <rect x="64" y="136" width="540" height="16" fill="#F87171" fill-opacity="0.12"/>
+  <text x="334" y="132" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" fill="#F87171">⚠️ BEFORE — Monolithic Shared Files</text>
+
+  <!-- Before: file tree -->
+  <text x="96" y="178" font-family="JetBrains Mono, monospace" font-size="14" fill="#94A3B8">openspec/</text>
+
+  <!-- CLAUDE.md with conflict marker -->
+  <rect x="88" y="192" width="484" height="56" rx="6" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="1"/>
+  <text x="116" y="214" font-family="JetBrains Mono, monospace" font-size="14" fill="#E2E8F0">├── CLAUDE.md</text>
+  <text x="116" y="234" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#F87171">    ⚡ Engineer A + B + C all write here at archive time</text>
+
+  <!-- specs/README.md with conflict marker -->
+  <rect x="88" y="258" width="484" height="56" rx="6" fill="#F87171" fill-opacity="0.08" stroke="#F87171" stroke-width="1"/>
+  <text x="116" y="280" font-family="JetBrains Mono, monospace" font-size="14" fill="#E2E8F0">├── specs/README.md</text>
+  <text x="116" y="300" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#F87171">    ⚡ Spec index updated by everyone simultaneously</text>
+
+  <text x="116" y="336" font-family="JetBrains Mono, monospace" font-size="14" fill="#64748B">└── config.yaml</text>
+
+  <!-- Problems callout -->
+  <rect x="88" y="356" width="484" height="136" rx="8" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="108" y="378" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#F87171">Problems at 4-6 engineers:</text>
+  <text x="116" y="400" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• 3+ engineers archive same sprint → merge conflict</text>
+  <text x="116" y="422" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• CLAUDE.md grows unbounded → context noise</text>
+  <text x="116" y="444" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• config.yaml write = specialized PR needed</text>
+  <text x="116" y="466" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• Archive becomes serialized bottleneck</text>
+
+  <!-- Conflict explosion graphic -->
+  <text x="334" y="528" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="40">💥</text>
+  <text x="334" y="570" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#F87171">CONFLICT at archive time</text>
+
+  <!-- Arrow between before/after -->
+  <line x1="612" y1="354" x2="666" y2="354" stroke="#4F8EF7" stroke-width="2.5"/>
+  <polygon points="661,348 674,354 661,360" fill="#4F8EF7"/>
+
+  <!-- AFTER box -->
+  <rect x="676" y="108" width="540" height="492" rx="12" fill="#1C1F2E" stroke="#34D399" stroke-width="1.5"/>
+  <!-- After header -->
+  <rect x="676" y="108" width="540" height="44" rx="12" fill="#34D399" fill-opacity="0.12"/>
+  <rect x="676" y="136" width="540" height="16" fill="#34D399" fill-opacity="0.12"/>
+  <text x="946" y="132" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="17" font-weight="700" fill="#34D399">✅ AFTER — Decomposed Per-Capability</text>
+
+  <!-- After: file tree -->
+  <text x="708" y="178" font-family="JetBrains Mono, monospace" font-size="14" fill="#94A3B8">openspec/</text>
+
+  <!-- CLAUDE.md as index -->
+  <rect x="700" y="192" width="484" height="44" rx="6" fill="#34D399" fill-opacity="0.06" stroke="#34D399" stroke-width="1"/>
+  <text x="728" y="208" font-family="JetBrains Mono, monospace" font-size="14" fill="#34D399">├── CLAUDE.md</text>
+  <text x="728" y="226" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#94A3B8">    Index only — 2-line pointer per capability</text>
+
+  <!-- capabilities/ tree -->
+  <text x="728" y="254" font-family="JetBrains Mono, monospace" font-size="14" fill="#E2E8F0">├── capabilities/</text>
+
+  <rect x="700" y="264" width="484" height="36" rx="4" fill="#4F8EF7" fill-opacity="0.06" stroke="#4F8EF7" stroke-width="0.5"/>
+  <text x="748" y="282" font-family="JetBrains Mono, monospace" font-size="13" fill="#4F8EF7">│   ├── auth/pitfalls.md</text>
+  <text x="948" y="282" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">← auth engineer only</text>
+
+  <rect x="700" y="306" width="484" height="36" rx="4" fill="#818CF8" fill-opacity="0.06" stroke="#818CF8" stroke-width="0.5"/>
+  <text x="748" y="324" font-family="JetBrains Mono, monospace" font-size="13" fill="#818CF8">│   ├── billing/pitfalls.md</text>
+  <text x="948" y="324" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">← billing engineer</text>
+
+  <rect x="700" y="348" width="484" height="36" rx="4" fill="#34D399" fill-opacity="0.06" stroke="#34D399" stroke-width="0.5"/>
+  <text x="748" y="366" font-family="JetBrains Mono, monospace" font-size="13" fill="#34D399">│   └── api/pitfalls.md</text>
+  <text x="948" y="366" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#64748B">← api engineer</text>
+
+  <text x="728" y="402" font-family="JetBrains Mono, monospace" font-size="14" fill="#64748B">└── config.yaml</text>
+
+  <!-- Solution callout -->
+  <rect x="700" y="416" width="484" height="100" rx="8" fill="#0F1117" stroke="#2D3748" stroke-width="1"/>
+  <text x="720" y="438" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600" fill="#34D399">Solution rules:</text>
+  <text x="728" y="458" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• Archive → write to own capability file only</text>
+  <text x="728" y="478" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• CLAUDE.md update → dedicated maintenance PR</text>
+  <text x="728" y="498" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">• Global pitfalls → batch in weekly/sprint PR</text>
+
+  <!-- No conflict check mark -->
+  <text x="946" y="548" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="40">✅</text>
+  <text x="946" y="580" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#34D399">Parallel archive, zero conflicts</text>
+
+  <!-- Bottom banner -->
+  <rect x="64" y="624" width="1152" height="44" rx="8" fill="#1C1F2E" stroke="#2D3748" stroke-width="1"/>
+  <text x="640" y="646" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#E2E8F0">CLAUDE.md stays under 200 lines · Global pitfalls → maintenance PR each sprint</text>
+
+  <!-- Slide number -->
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">8 / 9</text>
+</svg>

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+  </defs>
+
+  
+  <rect width="1280" height="720" fill="#0F1117" />
+
+  
+  <path fill="url(#titleGrad)" d="M66,52 H66 A2,2 0 0 1 68,54 V90 A2,2 0 0 1 66,92 H66 A2,2 0 0 1 64,90 V54 A2,2 0 0 1 66,52 Z" />
+  <text x="84" y="80" font-family="Inter, system-ui, sans-serif" font-size="36" font-weight="700" fill="#E2E8F0">The Engineer's Role Has Changed</text>
+
+  
+  <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M76,130 H572 A12,12 0 0 1 584,142 V598 A12,12 0 0 1 572,610 H76 A12,12 0 0 1 64,598 V142 A12,12 0 0 1 76,130 Z" />
+  
+  <path fill="#2D3748" d="M76,130 H572 A12,12 0 0 1 584,142 V170 A12,12 0 0 1 572,182 H76 A12,12 0 0 1 64,170 V142 A12,12 0 0 1 76,130 Z" />
+  <rect x="64" y="158" width="520" height="24" fill="#2D3748" />
+  <text x="324" y="158" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#94A3B8">BEFORE</text>
+
+  
+  <g transform="translate(96, 210)">
+    
+    <circle cx="20" cy="20" r="20" fill="#2D3748" />
+    <text x="20" y="20" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#94A3B8">1</text>
+    <text x="56" y="14" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Write code</text>
+    <text x="56" y="36" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">Implementation is the main work</text>
+    <line x1="20" y1="44" x2="20" y2="80" stroke="#2D3748" stroke-width="2" />
+
+    
+    <circle cx="20" cy="100" r="20" fill="#2D3748" />
+    <text x="20" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#94A3B8">2</text>
+    <text x="56" y="94" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Debug &amp; test</text>
+    <text x="56" y="116" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">Hours debugging what went wrong</text>
+    <line x1="20" y1="124" x2="20" y2="160" stroke="#2D3748" stroke-width="2" />
+
+    
+    <circle cx="20" cy="180" r="20" fill="#2D3748" />
+    <text x="20" y="180" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#94A3B8">3</text>
+    <text x="56" y="174" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Code review</text>
+    <text x="56" y="196" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">Line-by-line review, slow &amp; costly</text>
+    <line x1="20" y1="204" x2="20" y2="240" stroke="#2D3748" stroke-width="2" />
+
+    
+    <circle cx="20" cy="260" r="20" fill="#2D3748" />
+    <text x="20" y="260" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#94A3B8">4</text>
+    <text x="56" y="254" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Ship in 2-3 days</text>
+    <text x="56" y="276" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">Speed bottleneck = coding speed</text>
+  </g>
+
+  
+  <path fill="#2D3748" d="M104,528 H288 A8,8 0 0 1 296,536 V580 A8,8 0 0 1 288,588 H104 A8,8 0 0 1 96,580 V536 A8,8 0 0 1 104,528 Z" />
+  <text x="196" y="552" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Senior Engineer =</text>
+  <text x="196" y="572" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">Fastest coder</text>
+
+  
+  <g transform="translate(608, 360)">
+    <circle cx="32" cy="0" r="32" fill="#1C1F2E" stroke="#2D3748" stroke-width="1" />
+    <text x="32" y="0" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#4F8EF7">→</text>
+  </g>
+
+  
+  <path fill="#1C1F2E" stroke="#4F8EF7" stroke-width="1.5" d="M708,130 H1204 A12,12 0 0 1 1216,142 V598 A12,12 0 0 1 1204,610 H708 A12,12 0 0 1 696,598 V142 A12,12 0 0 1 708,130 Z" />
+  
+  <path fill="#4F8EF7" fill-opacity="0.2" d="M708,130 H1204 A12,12 0 0 1 1216,142 V170 A12,12 0 0 1 1204,182 H708 A12,12 0 0 1 696,170 V142 A12,12 0 0 1 708,130 Z" />
+  <rect x="696" y="158" width="520" height="24" fill="#4F8EF7" fill-opacity="0.2" />
+  <text x="956" y="158" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#4F8EF7">AFTER (AI-Accelerated)</text>
+
+  
+  <g transform="translate(728, 210)">
+    
+    <circle cx="20" cy="20" r="20" fill="#4F8EF7" fill-opacity="0.2" stroke="#4F8EF7" stroke-width="1" />
+    <text x="20" y="20" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#4F8EF7">1</text>
+    <text x="56" y="14" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Write precise spec</text>
+    <text x="56" y="36" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Spec quality = output quality</text>
+    <line x1="20" y1="44" x2="20" y2="80" stroke="#4F8EF7" stroke-width="2" stroke-opacity="0.3" />
+
+    
+    <circle cx="20" cy="100" r="20" fill="#818CF8" fill-opacity="0.2" stroke="#818CF8" stroke-width="1" />
+    <text x="20" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#818CF8">2</text>
+    <text x="56" y="94" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Claude executes</text>
+    <text x="56" y="116" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">TDD + eval harness runs automatically</text>
+    <line x1="20" y1="124" x2="20" y2="160" stroke="#818CF8" stroke-width="2" stroke-opacity="0.3" />
+
+    
+    <circle cx="20" cy="180" r="20" fill="#34D399" fill-opacity="0.2" stroke="#34D399" stroke-width="1" />
+    <text x="20" y="180" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#34D399">3</text>
+    <text x="56" y="174" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Review spec fidelity</text>
+    <text x="56" y="196" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Did Claude build the right thing?</text>
+    <line x1="20" y1="204" x2="20" y2="240" stroke="#34D399" stroke-width="2" stroke-opacity="0.3" />
+
+    
+    <circle cx="20" cy="260" r="20" fill="#34D399" fill-opacity="0.2" stroke="#34D399" stroke-width="1" />
+    <text x="20" y="260" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700" fill="#34D399">4</text>
+    <text x="56" y="254" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#E2E8F0">Ship in hours</text>
+    <text x="56" y="276" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Bottleneck = spec quality + judgment</text>
+  </g>
+
+  
+  <path fill="#4F8EF7" fill-opacity="0.15" stroke="#4F8EF7" stroke-width="1" d="M736,528 H920 A8,8 0 0 1 928,536 V580 A8,8 0 0 1 920,588 H736 A8,8 0 0 1 728,580 V536 A8,8 0 0 1 736,528 Z" />
+  <text x="828" y="552" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">Senior Engineer =</text>
+  <text x="828" y="572" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#4F8EF7">Sharpest spec author</text>
+
+  
+  <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M72,638 H1208 A8,8 0 0 1 1216,646 V682 A8,8 0 0 1 1208,690 H72 A8,8 0 0 1 64,682 V646 A8,8 0 0 1 72,638 Z" />
+  <text x="640" y="664" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-style="italic" fill="#94A3B8">"Speed is no longer the constraint. </text>
+  <text x="640" y="664" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="18" font-style="italic" fill="#E2E8F0">  Judgment is the scarce resource."</text>
+
+  
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">2 / 9</text>
+</svg>

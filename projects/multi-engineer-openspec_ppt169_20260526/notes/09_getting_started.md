@@ -1,0 +1,1 @@
+Three actions, start today. Run /opsx:explore before writing any code — even on a feature you think you understand. For large features, open the spec PR before touching implementation. During apply, let the harness drive and review spec fidelity, not line counts. Achieve is archive + CI green + PR merged.

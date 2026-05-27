@@ -1,0 +1,1 @@
+This deck introduces the OpenSpec workflow for teams of 2–6 engineers. The core premise is simple: in an AI-accelerated environment, spec quality determines delivery quality — not coding speed. The four phases (Explore → Propose → Apply → Archive) form a hard sequential pipeline with no skipping allowed.

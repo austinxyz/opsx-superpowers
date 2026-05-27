@@ -1,0 +1,1 @@
+Small features (≤2 days, single module) go straight to a single PR. Large features (≥3 days, architecture, cross-module) require a spec PR first — this locks tasks.md and design.md before any code is written. The two-track model prevents scope creep and keeps spec review fast.

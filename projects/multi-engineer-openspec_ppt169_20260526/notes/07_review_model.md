@@ -1,0 +1,1 @@
+Humans do spec review (15–30 min, high bar, intent and decomposition). CI and the evaluator subagent do code review. When you open a PR, ask one question: "Did Claude build the right thing?" — not "Is this code well-written?" The harness already answered the code question.

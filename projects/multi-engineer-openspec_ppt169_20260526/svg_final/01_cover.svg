@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F1117" />
+      <stop offset="100%" stop-color="#131929" />
+    </linearGradient>
+    <radialGradient id="glowLeft" cx="15%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="#4F8EF7" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#4F8EF7" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowRight" cx="85%" cy="35%" r="40%">
+      <stop offset="0%" stop-color="#818CF8" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  
+  <rect width="1280" height="720" fill="url(#bgGrad)" />
+  <rect width="1280" height="720" fill="url(#glowLeft)" />
+  <rect width="1280" height="720" fill="url(#glowRight)" />
+
+  
+  <g opacity="0.08">
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1.5" fill="#94A3B8" />
+    </pattern>
+    <rect width="1280" height="720" fill="url(#dots)" />
+  </g>
+
+  
+  <path fill="url(#titleGrad)" d="M66,200 H66 A2,2 0 0 1 68,202 V478 A2,2 0 0 1 66,480 H66 A2,2 0 0 1 64,478 V202 A2,2 0 0 1 66,200 Z" />
+
+  
+  <g id="phase-pills" transform="translate(84, 170)">
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M14,0 H74 A14,14 0 0 1 88,14 V14 A14,14 0 0 1 74,28 H14 A14,14 0 0 1 0,14 V14 A14,14 0 0 1 14,0 Z" />
+    <text x="44" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">🔍 Explore</text>
+
+    <text x="105" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#2D3748">→</text>
+
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M134,0 H194 A14,14 0 0 1 208,14 V14 A14,14 0 0 1 194,28 H134 A14,14 0 0 1 120,14 V14 A14,14 0 0 1 134,0 Z" />
+    <text x="164" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">📋 Propose</text>
+
+    <text x="225" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#2D3748">→</text>
+
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M254,0 H306 A14,14 0 0 1 320,14 V14 A14,14 0 0 1 306,28 H254 A14,14 0 0 1 240,14 V14 A14,14 0 0 1 254,0 Z" />
+    <text x="280" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">⚙️ Apply</text>
+
+    <text x="337" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#2D3748">→</text>
+
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M366,0 H426 A14,14 0 0 1 440,14 V14 A14,14 0 0 1 426,28 H366 A14,14 0 0 1 352,14 V14 A14,14 0 0 1 366,0 Z" />
+    <text x="396" y="14" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">📦 Archive</text>
+  </g>
+
+  
+  <text x="88" y="268" font-family="Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="url(#titleGrad)">Multi-Engineer</text>
+  <text x="88" y="334" font-family="Inter, system-ui, sans-serif" font-size="52" font-weight="700" fill="#E2E8F0">OpenSpec Workflow</text>
+
+  
+  <path fill="#2D3748" d="M89,358 H407 A1,1 0 0 1 408,359 V359 A1,1 0 0 1 407,360 H89 A1,1 0 0 1 88,359 V359 A1,1 0 0 1 89,358 Z" />
+
+  
+  <text x="88" y="396" font-family="Inter, system-ui, sans-serif" font-size="22" fill="#94A3B8">Spec quality = delivery quality</text>
+
+  
+  <g id="stats" transform="translate(88, 450)">
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M8,0 H140 A8,8 0 0 1 148,8 V60 A8,8 0 0 1 140,68 H8 A8,8 0 0 1 0,60 V8 A8,8 0 0 1 8,0 Z" />
+    <text x="74" y="26" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#4F8EF7">2-6</text>
+    <text x="74" y="52" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Engineers</text>
+
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M172,0 H304 A8,8 0 0 1 312,8 V60 A8,8 0 0 1 304,68 H172 A8,8 0 0 1 164,60 V8 A8,8 0 0 1 172,0 Z" />
+    <text x="238" y="26" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#34D399">4</text>
+    <text x="238" y="52" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Phases</text>
+
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M336,0 H468 A8,8 0 0 1 476,8 V60 A8,8 0 0 1 468,68 H336 A8,8 0 0 1 328,60 V8 A8,8 0 0 1 336,0 Z" />
+    <text x="402" y="26" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#818CF8">0</text>
+    <text x="402" y="52" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Skipped Gates</text>
+  </g>
+
+  
+  <g opacity="0.15" stroke="#4F8EF7" stroke-width="1" fill="none">
+    <path stroke="#2D3748" d="M828,120 H1132 A8,8 0 0 1 1140,128 V312 A8,8 0 0 1 1132,320 H828 A8,8 0 0 1 820,312 V128 A8,8 0 0 1 828,120 Z" />
+    <path stroke="#4F8EF7" d="M844,140 H976 A4,4 0 0 1 980,144 V172 A4,4 0 0 1 976,176 H844 A4,4 0 0 1 840,172 V144 A4,4 0 0 1 844,140 Z" />
+    <path stroke="#818CF8" d="M844,188 H1036 A4,4 0 0 1 1040,192 V220 A4,4 0 0 1 1036,224 H844 A4,4 0 0 1 840,220 V192 A4,4 0 0 1 844,188 Z" />
+    <path stroke="#34D399" d="M844,236 H936 A4,4 0 0 1 940,240 V268 A4,4 0 0 1 936,272 H844 A4,4 0 0 1 840,268 V240 A4,4 0 0 1 844,236 Z" />
+    <line x1="980" y1="158" x2="1020" y2="158" />
+    <line x1="1040" y1="206" x2="1080" y2="206" />
+    <circle cx="1100" cy="158" r="12" stroke="#4F8EF7" />
+    <circle cx="1120" cy="254" r="8" stroke="#34D399" />
+  </g>
+
+  
+  <g transform="translate(820, 360)">
+    <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M8,0 H352 A8,8 0 0 1 360,8 V172 A8,8 0 0 1 352,180 H8 A8,8 0 0 1 0,172 V8 A8,8 0 0 1 8,0 Z" />
+    <path fill="#2D3748" d="M8,0 H352 A8,8 0 0 1 360,8 V24 A8,8 0 0 1 352,32 H8 A8,8 0 0 1 0,24 V8 A8,8 0 0 1 8,0 Z" />
+    <rect width="360" height="24" y="8" fill="#2D3748" />
+    <circle cx="16" cy="16" r="5" fill="#F87171" />
+    <circle cx="36" cy="16" r="5" fill="#FBBF24" />
+    <circle cx="56" cy="16" r="5" fill="#34D399" />
+    <text x="16" y="62" font-family="JetBrains Mono, monospace" font-size="13" fill="#94A3B8">/opsx:explore auth-refactor</text>
+    <text x="16" y="86" font-family="JetBrains Mono, monospace" font-size="13" fill="#4F8EF7">/opsx:propose auth-refactor</text>
+    <text x="16" y="110" font-family="JetBrains Mono, monospace" font-size="13" fill="#818CF8">/opsx:apply auth-refactor</text>
+    <text x="16" y="134" font-family="JetBrains Mono, monospace" font-size="13" fill="#34D399">/opsx:archive auth-refactor</text>
+    <text x="16" y="162" font-family="JetBrains Mono, monospace" font-size="13" fill="#64748B">✓ Achieve</text>
+  </g>
+
+  
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">1 / 9</text>
+</svg>

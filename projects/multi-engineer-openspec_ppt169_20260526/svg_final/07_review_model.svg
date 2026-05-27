@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F8EF7" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="#0F1117" />
+
+  
+  <path fill="url(#titleGrad)" d="M66,36 H66 A2,2 0 0 1 68,38 V74 A2,2 0 0 1 66,76 H66 A2,2 0 0 1 64,74 V38 A2,2 0 0 1 66,36 Z" />
+  <text x="84" y="64" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="700" fill="#E2E8F0">Humans Review Spec, CI Reviews Code</text>
+
+  
+  <path fill="#1C1F2E" stroke="#4F8EF7" stroke-width="2" d="M76,100 H600 A12,12 0 0 1 612,112 V568 A12,12 0 0 1 600,580 H76 A12,12 0 0 1 64,568 V112 A12,12 0 0 1 76,100 Z" />
+
+  
+  <path fill="#4F8EF7" fill-opacity="0.15" d="M76,100 H600 A12,12 0 0 1 612,112 V160 A12,12 0 0 1 600,172 H76 A12,12 0 0 1 64,160 V112 A12,12 0 0 1 76,100 Z" />
+  <rect x="64" y="148" width="548" height="24" fill="#4F8EF7" fill-opacity="0.15" />
+  <text x="338" y="128" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#4F8EF7">👥 Spec Review</text>
+  <text x="338" y="162" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">HIGH BAR · 15–30 min · any team member can review</text>
+
+  
+  <text x="100" y="210" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#94A3B8">Focus: "Did we define the right thing?"</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M94,228 H590 A6,6 0 0 1 596,234 V282 A6,6 0 0 1 590,288 H94 A6,6 0 0 1 88,282 V234 A6,6 0 0 1 94,228 Z" />
+  <text x="108" y="251" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">🎯 Intent</text>
+  <text x="108" y="272" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Does this spec solve the right problem?</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M94,300 H590 A6,6 0 0 1 596,306 V354 A6,6 0 0 1 590,360 H94 A6,6 0 0 1 88,354 V306 A6,6 0 0 1 94,300 Z" />
+  <text x="108" y="323" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">✂️ Decomposition</text>
+  <text x="108" y="344" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Is the scope right? Can it be smaller?</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M94,372 H590 A6,6 0 0 1 596,378 V426 A6,6 0 0 1 590,432 H94 A6,6 0 0 1 88,426 V378 A6,6 0 0 1 94,372 Z" />
+  <text x="108" y="395" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">📋 CONTRACT blocks</text>
+  <text x="108" y="416" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Are interfaces and invariants defined?</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M94,444 H590 A6,6 0 0 1 596,450 V498 A6,6 0 0 1 590,504 H94 A6,6 0 0 1 88,498 V450 A6,6 0 0 1 94,444 Z" />
+  <text x="108" y="467" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">🔍 Completeness</text>
+  <text x="108" y="488" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Edge cases, error paths, pitfall awareness?</text>
+
+  
+  <text x="338" y="545" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#4F8EF7">⛔ BLOCK on CRITICAL or HIGH findings</text>
+  <text x="338" y="565" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B">For large features: PR1 spec review before any code</text>
+
+  
+  <line x1="620" y1="340" x2="660" y2="340" stroke="#2D3748" stroke-width="2" />
+  <polygon points="655,334 668,340 655,346" fill="#2D3748" />
+
+  
+  <path fill="#1C1F2E" stroke="#34D399" stroke-width="2" d="M680,100 H1204 A12,12 0 0 1 1216,112 V568 A12,12 0 0 1 1204,580 H680 A12,12 0 0 1 668,568 V112 A12,12 0 0 1 680,100 Z" />
+
+  
+  <path fill="#34D399" fill-opacity="0.12" d="M680,100 H1204 A12,12 0 0 1 1216,112 V160 A12,12 0 0 1 1204,172 H680 A12,12 0 0 1 668,160 V112 A12,12 0 0 1 680,100 Z" />
+  <rect x="668" y="148" width="548" height="24" fill="#34D399" fill-opacity="0.12" />
+  <text x="942" y="128" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="700" fill="#34D399">🤖 Code Review</text>
+  <text x="942" y="162" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">LIGHTWEIGHT · 5 min · verify, don't re-examine</text>
+
+  
+  <text x="704" y="210" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#94A3B8">Focus: "Did Claude build it correctly?"</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M698,228 H1194 A6,6 0 0 1 1200,234 V282 A6,6 0 0 1 1194,288 H698 A6,6 0 0 1 692,282 V234 A6,6 0 0 1 698,228 Z" />
+  <text x="712" y="252" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅  CI green?</text>
+  <text x="712" y="273" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">All builds, tests, E2E pass on the PR</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M698,300 H1194 A6,6 0 0 1 1200,306 V354 A6,6 0 0 1 1194,360 H698 A6,6 0 0 1 692,354 V306 A6,6 0 0 1 698,300 Z" />
+  <text x="712" y="324" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅  All evals pass?</text>
+  <text x="712" y="345" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">eval-log.md shows no CRITICAL / HIGH findings</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M698,372 H1194 A6,6 0 0 1 1200,378 V426 A6,6 0 0 1 1194,432 H698 A6,6 0 0 1 692,426 V378 A6,6 0 0 1 698,372 Z" />
+  <text x="712" y="396" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅  Spec intent matched?</text>
+  <text x="712" y="417" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">Skim diff against CONTRACT blocks in spec</text>
+
+  <path fill="#0F1117" stroke="#2D3748" stroke-width="1" d="M698,444 H1194 A6,6 0 0 1 1200,450 V498 A6,6 0 0 1 1194,504 H698 A6,6 0 0 1 692,498 V450 A6,6 0 0 1 698,444 Z" />
+  <text x="712" y="468" font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#34D399">✅  Archive ready?</text>
+  <text x="712" y="489" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#94A3B8">pitfalls.md written, CLAUDE.md index updated</text>
+
+  
+  <text x="942" y="545" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="13" fill="#34D399">Evaluator subagent already reviewed the code</text>
+  <text x="942" y="565" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#64748B">You verify intent — not line-by-line code logic</text>
+
+  
+  <path fill="#1C1F2E" stroke="#2D3748" stroke-width="1" d="M72,608 H1208 A8,8 0 0 1 1216,616 V652 A8,8 0 0 1 1208,660 H72 A8,8 0 0 1 64,652 V616 A8,8 0 0 1 72,608 Z" />
+  <text x="640" y="634" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-style="italic" fill="#E2E8F0">"Speed is no longer the constraint. </text>
+  <text x="640" y="634" text-anchor="middle" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" fill="#94A3B8">         Spec quality and judgment are the bottleneck."</text>
+
+  
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">7 / 9</text>
+</svg>

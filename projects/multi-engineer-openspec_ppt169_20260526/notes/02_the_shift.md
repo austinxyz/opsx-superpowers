@@ -1,0 +1,1 @@
+The engineer's job has fundamentally changed. Before: the senior engineer was the fastest coder. After: the senior engineer is the sharpest spec author. Claude handles implementation; you handle judgment. The bottleneck has shifted from hands-on-keyboard to clarity-of-thought.
