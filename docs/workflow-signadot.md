@@ -4,7 +4,7 @@ How [Signadot](https://www.signadot.com) **plans** and the `signadot-validate` r
 
 > Companion to [`workflow.md`](workflow.md). The four phases, slash commands, Contract blocks, and the evaluator harness are unchanged — read `workflow.md` first. This doc covers only what Signadot **adds**, for **single-engineer** use. The team four-layer-gate version is a later pass (see [Open edges](#open-edges)).
 >
-> Sources: [Signadot — "CI wasn't built for coding agents"](signadot/talk%20with%20ani%20-%20Snapadot), notes in [`signadot/和Ani的交流.md`](signadot/和Ani的交流.md).
+> Source: [Signadot — "CI wasn't built for coding agents. Here's what comes next"](https://thenewstack.io/ci-for-coding-agents/) (The New Stack).
 
 ---
 
