@@ -244,12 +244,12 @@ artifacts:
         followed by `- [ ] N.X+1 GREEN — minimal impl to pass the test`
       - Bug fixes MUST be preceded by a regression test that reproduces the bug
 
-      **Review checkpoints (mandatory):**
-      - Each `## N` task group MUST end with:
-        `- [ ] N.Z Run superpowers:requesting-code-review on the diff for group N; address CRITICAL/HIGH findings before moving on`
-      - Final group MUST include:
-        `- [ ] N.Z Run superpowers:verification-before-completion`
-        (N = final group number; Z = last position in that group)
+      **Harness gates (mandatory — follow tasks.md template exactly):**
+      - Each `## N` feature group MUST have:
+        - First task: `- [ ] N.0 CONTRACT — write openspec/changes/{{change}}/contracts/group-N.md`
+        - Last task: `- [ ] N.E EVAL — spawn evaluator subagent (haiku); reads contracts/group-N.md + spec + design + group diff; invokes superpowers:requesting-code-review (CRITICAL/HIGH = BLOCK); scores Spec/Runtime/Code; total ≥ threshold → PASS; < threshold → append FIX tasks + retry`
+      - Final group (verification/ship): NO CONTRACT/EVAL block — use `superpowers:verification-before-completion` instead
+      - Threshold default: 80; use 70 for groups containing VISUAL DIFF tasks
 
       **Frontend view sandwich (when applicable):**
       For each frontend GREEN task implementing a VIEW / MODAL / named LAYOUT
