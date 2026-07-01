@@ -4,7 +4,7 @@ Applying the OpenSpec + Superpowers workflow to a real Signadot project, end-to-
 
 ## Plan
 
-1. Sign up for Signadot trial account
+1. Sign up for Signadot trial account → https://app.signadot.com/sign-up
 2. Explore test project: https://github.com/signadot/hotrod
 3. Get hotrod running with trial cluster
 4. Apply `/opsx:explore → propose → apply → archive` to a new feature — as a reference example of OpenSpec + Signadot integration
