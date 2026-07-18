@@ -10,13 +10,13 @@ First real-world example of the OpenSpec + Superpowers workflow applied to a Sig
 
 Feature chosen: **Pickup Confirmation** (Option 2 from the service-map analysis) — simplest cross-service behavior that unit tests cannot cover, demonstrating the value of Signadot sandbox validation.
 
-## Project setup
+## Project setup (5 steps)
 
-- GitHub fork `signadot/hotrod` → `austinxyz/hotrod`
-- Clone fork to `C:\Users\lorra\projects\hotrod-opsx`
-- Install opsx scaffolding: `openspec/` (superpowers-driven schema), `.claude/commands/opsx/`, `docs/superpowers/specs/`, `CLAUDE.md`
-- Original `C:\Users\lorra\projects\hotrod` clone stays as the baseline deployment source
-- Development runs through `/opsx:explore → propose → apply → archive` inside `hotrod-opsx`
+1. **Fork + new session** — GitHub fork `signadot/hotrod` → `austinxyz/hotrod`; clone to `C:\Users\lorra\projects\hotrod-opsx`; work continues in a new Claude session rooted there. Original `C:\Users\lorra\projects\hotrod` clone stays as the baseline deployment source.
+2. **Install opsx-superpowers skills** in the new project: `openspec/` (superpowers-driven schema), `.claude/commands/opsx/`, `docs/superpowers/specs/`, `CLAUDE.md`
+3. **Extend the opsx skills for Signadot plan/validation** per [signadot-integration-spec.md](../../signadot-integration-spec.md): `signadot-plans/` dir at propose, `Runtime: validated by signadot plan <id>` Contract binding, `N.V VALIDATE` step between GREEN and EVAL, verdict → EVAL Runtime evidence
+4. **Save both feature specs to the forked repo** — this doc (Feature 2: Pickup Confirmation, approved) and a Feature 1 (Driver Status Tracking) spec, which needs its own brainstorm/design pass before development
+5. **Develop Feature 2 first** via `/opsx:explore → propose → apply → archive`, then Feature 1 (reusing `dispatchstore`)
 
 ## User-visible behavior
 
@@ -62,4 +62,5 @@ The validation chain `HTTP POST → driver → Redis → frontend polling` spans
 
 ## Follow-up
 
-Option 1 (Driver Status Tracking) as a second OpenSpec change in the same repo, reusing `dispatchstore`.
+- Feature 1 (Driver Status Tracking): second OpenSpec change in the same repo, reusing `dispatchstore`; spec drafted at setup step 4, designed in its own brainstorm before development
+- Division-of-work note: step 3 covers the **opsx side** of the integration (task template, N.V step, plan stubs). The Signadot-side runner (`signadot-validate` CLI behavior, plan schema) still follows Joe's answers to the open questions in the integration spec; until then N.V materializes/runs plans manually or via script.
