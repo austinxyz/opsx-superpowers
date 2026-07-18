@@ -94,6 +94,46 @@ Create `openspec/changes/<topic>/eval-log.md` with this header (substituting the
 <!-- Appended by evaluator subagent after each N.E EVAL run -->
 ```
 
+### 3b. Signadot plans for integration-critical groups (optional per group)
+
+Skip this step entirely if `integrations.signadot.enabled` is absent or false in `openspec/config.yaml`.
+
+A group is **integration-critical** when its behavior spans services and is user-visible end-to-end (the kind that passes unit tests but breaks the system).
+
+**Decision checklist** — score each group against these signals:
+
+| Signal | Present → bind a plan | Absent → plain test command |
+|---|---|---|
+| Call chain crosses ≥2 services | e.g. frontend → driver → redis | single-service internal logic |
+| Async hop in the path | message queue, polling loop | synchronous calls only |
+| Shared runtime state | a store key written by one side, read by another | pure in-memory / pure computation |
+| Deployment-surface change | k8s Service, ports, routing | code-only change |
+| Failure mode = "units green, system broken" | dropped routing key, TTL expiry, unreachable port | failures caught directly by unit tests |
+
+Litmus question: *"With this group's unit tests all green, how could the user-visible behavior still break?"* A concrete answer (cross-service / async / shared-state / deployment reason) → bind a plan. No answer → don't.
+
+Counter-guardrail: plans run real sandboxes against the real cluster — slow and costly. Bind them at service seams only; a pure-logic group with a plan is waste. Verification/ship groups never bind one.
+
+For each integration-critical group:
+
+1. Pre-create the plans directory (parallel to `contracts/`):
+
+   ```bash
+   mkdir -p openspec/changes/<topic>/signadot-plans
+   ```
+
+2. Author `openspec/changes/<topic>/signadot-plans/<behavior-id>.yaml` — a **parameterized plan draft with unbound params** (no concrete URLs/payloads yet; they don't exist until apply). Invoke the `signadot-plan` skill to author it: follow its schema-discovery workflow (`signadot plan schema`, action catalog — steps reference `action.actionID`, not action names). If the cluster/CLI is unreachable at propose time, write the draft with the behavior narrative, declared-but-unbound `params`, intended steps, and per-step assertions; note at the top that the spec must be re-validated against `signadot plan schema` at apply N.V. Include a `selectionHint` describing what the plan validates (used at tagging — lets an agent match plan to diff).
+
+3. Rewrite that group's Contract **Runtime** field to the binding form:
+
+   ```
+   - **Runtime**: validated by signadot plan `<behavior-id>`
+   ```
+
+4. Ensure the group has an `N.V VALIDATE` task between its last GREEN (or VISUAL DIFF) and `N.E EVAL` (the template shows the form at 2.V).
+
+Groups that are NOT integration-critical keep the plain test-command Runtime and get no plan and no N.V task.
+
 ### 4. After proposal generation: branch on HAS_UI_SURFACE
 
 Read the just-written `openspec/changes/<topic>/proposal.md` frontmatter.
@@ -133,3 +173,4 @@ Output:
 - If a change with that name already exists at `openspec/changes/<topic>/`, ask the user whether to continue (delete and re-create) or pick a different name.
 - ALWAYS fill in `### Contract` blocks in tasks.md before committing. Placeholder comments in Contract blocks are plan failures — the evaluator cannot score against empty criteria.
 - `context` and `rules` from `openspec instructions` output are constraints on YOU (the agent), not content to copy into artifact files.
+- Signadot plans are propose-phase artifacts (what correct means) — author the yaml with unbound params here; NEVER fill in concrete URLs/payloads at propose. Binding happens at apply N.V.

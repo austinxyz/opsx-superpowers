@@ -17,10 +17,12 @@ Feature candidate: a behavior that spans at least two services, so Signadot's re
 
 ## Key pre-requisites
 
-Before `/opsx:apply`, need answers from Joe on open questions in [`../docs/signadot-integration-spec.md`](../docs/signadot-integration-spec.md):
-- Plan YAML schema
-- `signadot-validate` output format
-- Dry-run mode availability
+~~Before `/opsx:apply`, need answers from Joe~~ — mostly self-answered 2026-07-18:
+official skills exist (github.com/signadot/agent-skills), plan schema is
+runtime-discoverable (`signadot plan schema`, action DAG), verdict via
+`plan x get-output`. See "Validation results" in
+[`../docs/signadot-integration-spec.md`](../docs/signadot-integration-spec.md).
+Still for Joe: image-allowlist bug, sleep primitive, dry-run mode, Windows CLI.
 
 ## Contacts
 
@@ -29,11 +31,12 @@ Before `/opsx:apply`, need answers from Joe on open questions in [`../docs/signa
 
 ## Status
 
-- [ ] Trial account registered
-- [ ] hotrod running locally
-- [ ] hotrod connected to Signadot cluster
-- [ ] Feature candidate chosen
-- [ ] OpenSpec change opened for the feature
-- [ ] `signadot-plan` skill invoked at propose
-- [ ] `signadot-validate` runs at apply N.V
-- [ ] e2e validated — example complete
+- [x] Trial account registered
+- [x] hotrod running locally
+- [x] hotrod connected to Signadot cluster (austin-staging-1, kind)
+- [x] Feature candidate chosen (pickup-confirmation, 2026-07-18)
+- [x] OpenSpec change opened for the feature (hotrod-opsx, branch opsx-setup)
+- [x] `signadot-plan` skill invoked at propose (official skill from signadot/agent-skills)
+- [x] `signadot-validate` runs at apply N.V (plan `lkyjcsgkqkjxn` exec `dp4c62nm2suys`, 5/5 pass)
+- [x] e2e validated — example complete (archived as 2026-07-18-pickup-confirmation;
+      plan registered in openspec/specs/dispatch-tracking/plans/)

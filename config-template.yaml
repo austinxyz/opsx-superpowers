@@ -9,6 +9,17 @@ project:
   custom_verification_checks: [] # project-specific grep/lint checks appended to final verification
                                  # e.g. 'grep -rn "hardcoded_secret" src/'
 
+integrations:
+  signadot:
+    enabled: false            # true = propose authors signadot plans for integration-critical
+                              # groups (via the official signadot-plan skill) and apply runs
+                              # N.V VALIDATE (signadot-plan + signadot-validate skills) before N.E EVAL
+    cluster: ""               # Signadot cluster name (as shown in app.signadot.com)
+    # One-time prerequisites (never per-topic):
+    #  - Signadot Operator installed in the cluster, cluster connected in app.signadot.com
+    #  - Managed Plan Runners enabled for the cluster (dashboard: Platform -> Managed Runners)
+    #  - Official skills installed: npx skills add signadot/agent-skills
+
 context: |
   # Describe your project so Claude understands it. Include:
   # - Tech stack and versions (e.g. "Python 3.12 + FastAPI + PostgreSQL")

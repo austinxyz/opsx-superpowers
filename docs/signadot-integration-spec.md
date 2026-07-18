@@ -1,9 +1,80 @@
 # OpenSpec × Signadot — Integration Spec
 
-> **Status:** DRAFT — for review with Joe (Signadot Engineering), week of 2026-06-30  
+> **Status:** VALIDATED E2E 2026-07-18 on hotrod-opsx (`pickup-confirmation`) — see the
+> "Validation results" section below. Skill-interface sections 1–2 are SUPERSEDED by
+> Signadot's official agent skills; kept for history.  
 > **Author:** Austin  
 > **Companion doc:** [`workflow-signadot.md`](workflow-signadot.md) — conceptual overview  
 > **This doc:** concrete skill interfaces and artifact formats for implementation
+
+---
+
+## Validation results (2026-07-18, hotrod-opsx / pickup-confirmation)
+
+The full cycle ran end-to-end: explore → propose (plan draft) → apply (TDD +
+`2.V VALIDATE` on real cluster austin-staging-1 → evaluator consumed the verdict
+as Runtime evidence) → archive (plan registered into `openspec/specs/<cap>/plans/`).
+Reference implementation: https://github.com/austinxyz/hotrod branch `opsx-setup`.
+
+### Official skills replace the planned wrappers
+
+Signadot ships official agent skills at https://github.com/signadot/agent-skills
+(`npx skills add signadot/agent-skills`): **`signadot-plan`** (author/run plan specs)
+and **`signadot-validate`** (sandbox + routing-key validation workflow). The
+`signadot-plan` / `signadot-validate` wrappers this spec asked Joe to implement
+already exist — opsx commands now invoke the official skills directly.
+
+### Real plan model (supersedes the `kind: TestPlan` guess below)
+
+A plan is an immutable compiled DAG of **action invocations**, discoverable at
+runtime — not a static YAML schema:
+
+- `signadot plan schema` returns the live JSON schema; top-level fields:
+  `selectionHint`, `params`, `cluster`, `runner`, `steps`, `output`
+- Steps reference org-catalog actions **by `action.actionID`** (from
+  `signadot plan action get <name>`), not by name; catalog: `check`, `eval`,
+  `request-http`, `k6`, `playwright`, `run-container`
+- Params/eval-outputs need explicit `schema` for refs to drill in; step ordering
+  is dependency-driven via `args.refs` / `extraInputs` (array order ≠ execution order)
+- `selectionHint` is a first-class top-level field (open question 2: answered)
+- Unbound params: declare without `default`; bind at run:
+  `signadot plan run <plan-id> --param k=v` (open question 3: answered)
+- Output/verdict: per-check outputs via `signadot plan x get-output <exec-id>
+  <step>/result` (JSON: `{"check": name}` on pass, + `error.message` on fail);
+  execution JSON carries per-step phase (open question 4: answered)
+- Runtime prerequisite: **Managed Plan Runners** enabled per cluster in the
+  dashboard (Platform → Managed Runners). A `jobrunnergroup` does NOT satisfy
+  "no plan runner group on cluster".
+- `request-http` auto-injects routing-key headers when the step has
+  `routingContext` (open question on header plumbing: answered)
+
+### Bugs / friction for Joe
+
+1. **Image allowlist appears broken**: with run-container images allowlisted in
+   Platform → Managed Runners → Configure Actions (tried both shorthand and
+   fully-qualified `docker.io/...` forms, Apply saved), `plan create` still
+   rejects every image — including k6's own system image `grafana/k6:1.7.1` —
+   with "not in this org's allowed-images list". Only actionbox-backed actions
+   (request-http / eval / check) are usable. Org: austinxyza.
+2. **No sleep/wait primitive in plans**: async flows (Kafka processing) need
+   polling. `request-http` exits 1 on transport timeout, so blackhole-URL delays
+   fail the step; we resorted to chaining request-http steps against
+   `httpbin.org/delay/4` as spacers. A `wait`/`sleep` action (or retry policy on
+   request-http) would remove the hack.
+3. **No Windows CLI build** (all releases darwin/linux; source build blocked by
+   private `signadot/libconnect`). Docker image works as a wrapper, but
+   `auth login` fails in-container (`dbus-launch` keyring) — config.yaml
+   fallback works. A windows binary or documented docker-wrapper path would help.
+4. Docs gap: "Enabling Plan Runner Groups" is referenced in release notes but
+   the page 404s; the dashboard toggle was found by trial.
+
+### Remaining open questions
+
+- Dry-run mode (original question 5) — still unknown
+- Plan ↔ group cardinality (original question 8) — unexercised; pickup-confirmation
+  was 1 plan : 1 group
+
+---
 
 ---
 
