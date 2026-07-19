@@ -40,3 +40,12 @@ Still for Joe: image-allowlist bug, sleep primitive, dry-run mode, Windows CLI.
 - [x] `signadot-validate` runs at apply N.V (plan `lkyjcsgkqkjxn` exec `dp4c62nm2suys`, 5/5 pass)
 - [x] e2e validated — example complete (archived as 2026-07-18-pickup-confirmation;
       plan registered in openspec/specs/dispatch-tracking/plans/)
+
+**Full write-up: [2026-07-18-e2e-summary.md](2026-07-18-e2e-summary.md)** — spec scorecard
+(14/16 achieved), friction list for Joe, next steps.
+
+## Next
+
+- [ ] Feature 2: `driver-status` (DRAFT spec in hotrod-opsx) — exercises plan↔group cardinality + plan library reuse
+- [ ] Sync-back skill diffs from hotrod-opsx → this repo (commands/, schemas/, config-template.yaml)
+- [ ] Send Joe: friction list (image allowlist, sleep primitive, Windows CLI, docs 404) + open questions (dry-run, cardinality)
