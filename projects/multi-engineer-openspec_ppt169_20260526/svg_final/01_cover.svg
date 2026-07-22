@@ -24,14 +24,6 @@
   <rect width="1280" height="720" fill="url(#glowRight)" />
 
   
-  <g opacity="0.08">
-    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <circle cx="20" cy="20" r="1.5" fill="#94A3B8" />
-    </pattern>
-    <rect width="1280" height="720" fill="url(#dots)" />
-  </g>
-
-  
   <path fill="url(#titleGrad)" d="M66,200 H66 A2,2 0 0 1 68,202 V478 A2,2 0 0 1 66,480 H66 A2,2 0 0 1 64,478 V202 A2,2 0 0 1 66,200 Z" />
 
   
@@ -108,5 +100,5 @@
   </g>
 
   
-  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">1 / 9</text>
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">1 / 11</text>
 </svg>

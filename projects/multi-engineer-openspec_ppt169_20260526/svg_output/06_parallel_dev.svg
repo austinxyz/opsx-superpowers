@@ -72,5 +72,5 @@
   <text x="148" y="634" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">Interface must be locked (interface PR merged) before parallel implementation starts</text>
 
   <!-- Slide number -->
-  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">6 / 9</text>
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">6 / 11</text>
 </svg>

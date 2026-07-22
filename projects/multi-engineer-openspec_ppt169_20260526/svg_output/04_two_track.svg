@@ -98,5 +98,5 @@
   <text x="80" y="686" dominant-baseline="middle" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#94A3B8">PR1 locks spec — tasks.md and design.md do not change during apply</text>
 
   <!-- Slide number -->
-  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">4 / 9</text>
+  <text x="1216" y="700" text-anchor="end" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#64748B">4 / 11</text>
 </svg>
