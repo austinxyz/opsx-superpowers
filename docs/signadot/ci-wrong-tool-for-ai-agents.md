@@ -102,7 +102,7 @@ Group 2 score: 99/100.
 
 The same behavior, seen from the UI — note the per-service labels in the log pane: `frontend`, `location`, and `route` all serve from `(baseline)`, while `driver` serves from the `(pickup-confirmation-dev)` fork. One request, mixed routing, ending with the arrival notification surfacing in the frontend:
 
-![HotROD UI test: baseline services + forked driver in one request flow](pickeup-confirmation.png)
+![HotROD UI test: baseline services + forked driver in one request flow](pickup-confirmation.png)
 
 Full eval log: [hotrod/openspec/changes/archive/2026-07-18-pickup-confirmation/eval-log.md](https://github.com/austinxyz/hotrod/blob/opsx-setup/openspec/changes/archive/2026-07-18-pickup-confirmation/eval-log.md).
 
