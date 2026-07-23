@@ -43,9 +43,34 @@ Both map cleanly onto spec-driven development. `signadot-plan` is a machine-read
 
 ## The Integration
 
-I integrated Signadot into [opsx-superpowers](https://github.com/austinxyz/opsx-superpowers/blob/signadot/docs/workflow-signadot.md), my OpenSpec + Superpowers stack. The integration lives in the `achieve` phase, where evaluator subagents score completed implementation against group contracts.
+I integrated Signadot into [opsx-superpowers](https://github.com/austinxyz/opsx-superpowers/blob/signadot/docs/workflow-signadot.md), my OpenSpec + Superpowers stack. The integration lives in the `apply` phase, where evaluator subagents score completed implementation against group contracts.
 
 For groups that span multiple components, the evaluator now runs `signadot-plan` to define sandbox assertions, then calls `signadot-validate` against a live environment. For single-component groups, nothing changes. The sandbox is conditional — it only runs when multi-component behavior is what's actually being verified.
+
+### How the Feature Gets Into the Sandbox
+
+The feature is never "deployed" in the CI sense. It's injected as a forked service:
+
+1. **Build.** After the implementation passes unit tests, the agent builds the modified service into a local image (`docker build -t hotrod-pickup:dev .`).
+2. **Load.** The image goes straight into the cluster node (`kind load docker-image` locally; in a real setup, a push to your registry).
+3. **Fork.** A sandbox spec tells Signadot to fork exactly one Deployment — the driver — and swap in the new image:
+
+   ```yaml
+   forks:
+     - forkOf:
+         kind: Deployment
+         namespace: hotrod
+         name: driver
+       customizations:
+         images:
+           - container: hotrod
+             image: hotrod-pickup:dev
+   ```
+
+   One `signadot sandbox apply` and the forked driver is running. Frontend, Redis, Kafka, MySQL — all still the baseline. Nothing else is duplicated.
+4. **Route.** The sandbox carries a routing key. Requests tagged with it get routed to the forked driver; everything else flows through baseline. Each `request-http` step in the plan carries the key via `routingContext`, so the test traffic — and only the test traffic — exercises the new code against real baseline services.
+
+That's why this fits inside the agent's loop: no full-environment build, no pipeline. One image, one sandbox apply, seconds to a live integration environment.
 
 ---
 
