@@ -33,7 +33,7 @@ So either the agent waits for CI — wrong timing — or you bring the integrati
 
 ## Sandbox as the Architectural Answer
 
-Signadot builds exactly this. A sandbox gives you a per-branch fork of your cluster at dev time. You specify which services run your local image; the rest of the cluster stays as the baseline. A routing key directs traffic from a test client into the forked services rather than the live ones.
+[Signadot](https://www.signadot.com/?utm_source=austin_blog&utm_medium=referral&utm_campaign=guest_blog) builds exactly this. A sandbox gives you a per-branch fork of your cluster at dev time. You specify which services run your local image; the rest of the cluster stays as the baseline. A routing key directs traffic from a test client into the forked services rather than the live ones.
 
 Two skills handle the AI agent surface. `signadot-plan` defines what the sandbox tests and what assertions constitute passing. `signadot-validate` runs the plan against a live sandbox and returns structured pass/fail.
 
@@ -164,7 +164,8 @@ This post is part of the OpenSpec + Superpowers series:
 
 ## References
 
-1. Signadot — [CI for Coding Agents](https://thenewstack.io/ci-for-coding-agents/) — the piece that started this
-2. [opsx-superpowers (signadot branch)](https://github.com/austinxyz/opsx-superpowers/blob/signadot/docs/workflow-signadot.md) — workflow documentation for the Signadot integration
-3. [hotrod](https://github.com/austinxyz/hotrod) — the test vehicle (Jaeger demo app, ride-sharing simulation)
-4. [Pickup confirmation eval log](https://github.com/austinxyz/hotrod/blob/opsx-setup/openspec/changes/archive/2026-07-18-pickup-confirmation/eval-log.md) — full evaluation output for the feature built in this post
+1. [Signadot](https://www.signadot.com/?utm_source=austin_blog&utm_medium=referral&utm_campaign=guest_blog) — sandbox platform used throughout this post
+2. Signadot — [CI for Coding Agents](https://thenewstack.io/ci-for-coding-agents/) — the piece that started this
+3. [opsx-superpowers (signadot branch)](https://github.com/austinxyz/opsx-superpowers/blob/signadot/docs/workflow-signadot.md) — workflow documentation for the Signadot integration
+4. [hotrod](https://github.com/austinxyz/hotrod) — the test vehicle (Jaeger demo app, ride-sharing simulation)
+5. [Pickup confirmation eval log](https://github.com/austinxyz/hotrod/blob/opsx-setup/openspec/changes/archive/2026-07-18-pickup-confirmation/eval-log.md) — full evaluation output for the feature built in this post
