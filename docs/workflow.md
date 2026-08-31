@@ -47,10 +47,11 @@ Side command (any time between propose and archive): `/opsx:update <topic>` — 
 
 **Input:** Any description — vague ("real-time collaboration") or specific ("the auth system needs a refactor").
 
-**5 steps the agent works through:**
+**6 phases the agent works through (Phase 0 + 5 steps):**
 
-1. **Free-thinking** — conversational discussion, one question at a time, ASCII diagrams, reading project code for context. No code, no docs, no premature implementation decisions.
-2. **Draft requirements** — when discussion is clear enough, agent offers to draft `docs/superpowers/specs/<date>-<topic>-requirements.md` with `Status: DRAFT`.
+0. **Ceremony scaling** — classify the request before exploring (Superpowers 6.3 pattern): **spike** (one file / throwaway → exit opsx, just do it), **bounded** (2-5 files, one capability → fast track: short requirements, review still mandatory), **architectural** (new capability / cross-cutting / UI → full flow). Classification is said out loud; user can override. Unsure → higher tier.
+1. **Free-thinking** — conversational discussion, one question at a time, ASCII diagrams, reading project code for context. No code, no docs, no premature implementation decisions. (Bounded tier: 2-3 turns may suffice.)
+2. **Draft requirements** — when discussion is clear enough, agent offers to draft `docs/superpowers/specs/<date>-<topic>-requirements.md` with `Status: DRAFT`. (Bounded tier: Goals / Success Criteria / Referenced Capabilities only, rest `N/A (bounded)`.)
 3. **Brainstorming review** — agent runs `superpowers:brainstorming` self-review: placeholders, consistency, scope, ambiguity. Gaps get filled. Status bumped to `REVIEWED`.
 4. **UI detour (only if `HAS_UI_SURFACE: yes`)** — design system selection, mock drawn in browser, saved to `docs/superpowers/specs/mocks/<date>-<topic>-mocks.html`.
 5. **Commit + handoff** — commits requirements (+ mocks if any), tells you to run `/opsx:propose <topic>`.
@@ -75,13 +76,14 @@ Side command (any time between propose and archive): `/opsx:update <topic>` — 
 **What happens:**
 
 1. `openspec new change <topic> --schema superpowers-driven`
-2. Artifacts generated in dependency order:
-   - `proposal.md` — Why / What Changes / Capabilities / Impact / Out of Scope (frontmatter: `HAS_UI_SURFACE: yes/no`)
-   - `specs/<capability>/spec.md` — SHALL statements + Scenario deltas for each new/modified capability
+2. **Copy explore artifacts into the change dir** (OpenSpec ≥1.11: `generates:` must stay in-dir) — `requirements.md` always; `mocks.html` for UI changes. Canonical files stay in `docs/superpowers/specs/`; the copies make `openspec status` track them as done.
+3. Artifacts generated in dependency order:
+   - `proposal.md` — Why / What Changes / Capabilities / Impact / Out of Scope (frontmatter: `HAS_UI_SURFACE: yes/no`). Zero-delta changes (pure refactor/tooling) must set `skip_specs: true` in `.openspec.yaml` — `openspec validate` rejects them otherwise.
+   - `specs/<capability>/spec.md` — `## Purpose` (new capabilities, authored HERE not at archive) + SHALL statements + Scenario deltas for each new/modified capability
    - `design.md` — decisions (with alternatives), risks, migration plan, UI Fidelity (required for UI changes)
-   - mocks already written in Phase 1 — just verified here
+   - mocks copied at step 2 — verified here (backend-only: stub written to `mocks.html`)
    - `tasks.md` — RED/GREEN pairs, MOCK + VISUAL DIFF sandwich for UI tasks, code-review checkpoint at end of each group, `verification-before-completion` as the final task
-3. Commit + handoff
+4. Commit + handoff
 
 **Task template rules (injected by the schema):**
 
@@ -96,11 +98,13 @@ Side command (any time between propose and archive): `/opsx:update <topic>` — 
 
 ```
 openspec/changes/<topic>/
+  requirements.md              (copy of the docs/ canonical, for status tracking)
   proposal.md
-  specs/<capability>/spec.md   (one or more)
+  specs/<capability>/spec.md   (one or more; ## Purpose authored here)
+  mocks.html                   (copy of docs/ mocks, or backend stub)
   design.md
   tasks.md
-  .openspec.yaml               (schema lock)
+  .openspec.yaml               (schema lock; skip_specs: true for zero-delta changes)
 ```
 
 ---
@@ -136,9 +140,9 @@ openspec/changes/<topic>/
 
 **What happens:**
 
-1. **Pre-flight:** confirm all artifacts done, all tasks `[x]`, spec deltas synced to capability specs
+1. **Pre-flight:** confirm all artifacts done, all tasks `[x]`, spec deltas synced to capability specs; `openspec validate <topic>` must pass (catches structure problems and zero-delta changes missing `skip_specs: true`)
 2. `openspec archive <topic>` — moves change to `openspec/changes/archive/<date>-<topic>/`, merges spec deltas into `openspec/specs/<capability>/spec.md`
-3. **Cleanup 1: fill `## Purpose` in capability spec** — `openspec archive` leaves `TBD`; extract 1–3 sentences from proposal's Why + requirements Goals. *This is one of the core motivations for this workflow* — a `TBD` Purpose is a dead-end for future contributors.
+3. **Cleanup 1: verify `## Purpose` in capability spec** — Purpose is now authored at propose (spec template) so this is usually a verification: `grep` for leftover `TBD` + `openspec validate --archived`. Only older changes still need it written from proposal Why + requirements Goals. *A `TBD` Purpose is a dead-end for future contributors* — the check stays even though authoring moved earlier.
 4. **Cleanup 2: update `openspec/specs/README.md`** — add a line for any new capability (user story / covered requirements / backend / frontend / acceptance criteria)
 5. **Cleanup 3: update `CLAUDE.md` Pitfalls** — read `eval-log.md` first: groups with `attempt > 1` are automatic pitfall candidates (the retries are structured signals of non-obvious complexity). Then check dev log + diff. Don't fabricate.
 6. **Cleanup 4: conditionally update project `README.md`** — only if this change introduces user-visible new behavior (auth flow changed = update; internal ops = skip)
