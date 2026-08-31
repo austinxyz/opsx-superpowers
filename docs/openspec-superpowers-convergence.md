@@ -1,0 +1,115 @@
+# The Upstream Caught Up (and Broke My Fork)
+
+> 状态：草稿（英文主稿，系列第 6 篇）
+> 创建：2026-08-31
+
+---
+
+```
+✖ Error: Invalid schema at '...superpowers-driven\schema.yaml':
+  artifacts.0.generates: generates field must be a relative path
+  inside its allowed directory
+```
+
+That's what `openspec new change` printed after I upgraded OpenSpec from 1.2.0 to 1.11.0. My custom schema — the thing this whole series is built on — was suddenly invalid. Every project using it would break on upgrade.
+
+This post covers what changed upstream in OpenSpec and Superpowers over the summer, how much of it converged with the enhancements I'd already built, what I changed in response, and what a month of running the full stack on a real open-source project looks like.
+
+<!--truncate-->
+
+---
+
+## What OpenSpec Shipped (1.2 → 1.11)
+
+Nine minor versions in three months. The ones that matter:
+
+| Version | Change | Why it matters |
+|---|---|---|
+| 1.6 | **`/opsx:update`** — revise planning artifacts mid-change | My four-phase flow had no revision step. Mid-change edits were hand-edits with no coherence check |
+| 1.9–1.10 | **`validate` catches unwritten `## Purpose`**, `validate --archived` | A `TBD` Purpose was the canonical dead-end my archive phase existed to fix — now the CLI polices it |
+| 1.11 | **`generates:` paths must stay inside the change directory** | The breaking change above. My schema wrote requirements to `docs/` — authored before the change dir exists |
+| 1.11 | `--diff` for changes, `--all` status | Less hand-rolled git plumbing in the evaluator |
+| 1.5–1.7 | Stores (beta), auto-update check, more agent targets | Watch, don't adopt yet |
+
+Also new: zero-delta changes are now rejected by `validate` unless `.openspec.yaml` sets `skip_specs: true`. Specs describe behavior; if behavior doesn't change, no spec should change — but you have to say so explicitly now.
+
+## What Superpowers Shipped (6.0 → 6.3)
+
+Superpowers 6.0 was the big rewrite: the two per-task reviewers (spec compliance + code quality) merged into **one Task Reviewer producing two verdicts** from a single read of the diff. Half the review cost, same gates. Handoffs moved into files — task briefs and review packages under `.superpowers/sdd/` — so the main session stops carrying every diff.
+
+6.2 and 6.3 kept pulling the same thread:
+
+- **Ceremony scaling** (6.3): requests get classified as *spike*, *bounded*, or *architectural*. Small tasks skip the two-document ritual entirely.
+- **Plans carry a `Spec:` pointer** (6.3): implementation plans link back to the design they satisfy.
+- **Review-fix loop hardening** (6.2): the implementer is resumed with a scoped re-review prompt, with a five-round circuit breaker.
+- Plan-scoped workspaces, Windows Git Bash dispatch, skill compression.
+
+## The Convergence Scorecard
+
+Here's the part I find genuinely satisfying. When I built the opsx-superpowers harness in May, several design decisions were bets. The upstream releases are a chance to grade them:
+
+| My enhancement (May) | Upstream now (Aug) | Verdict |
+|---|---|---|
+| One evaluator subagent scoring Spec/Runtime/Code per group | 6.0: one Task Reviewer, two verdicts | **Converged** — same insight, independently |
+| Contract block binds tasks to SHALL statements | 6.3: plans carry a `Spec:` pointer | **Converged** |
+| Retry loop: max 3 attempts, plateau detection, escalate to human | 6.2: five-round circuit breaker on review-fix | **Converged** |
+| Archive fills `## Purpose` (the TBD dead-end fix) | 1.10: `validate` flags unwritten Purpose | **Converged** — and upstream's version is better placed |
+| Binary "use OpenSpec or don't" table | 6.3: three-tier ceremony scaling | **They were ahead** — absorbed it |
+| Signadot real-cluster verdict as Runtime evidence | — | **Still unique** |
+| Durable plan library per capability (`specs/<cap>/plans/`) | — | **Still unique** |
+| Pitfall sinking from eval retry signals | — | **Still unique** |
+
+Four convergences, one absorption, three things still ahead of upstream. When two teams independently land on "one skeptical reviewer, double verdict, circuit breaker," that's evidence the shape is right — the same way convergent evolution tells you wings are a good idea.
+
+## What I Changed
+
+Five edits, all on the [signadot branch](https://github.com/austinxyz/opsx-superpowers/tree/signadot):
+
+1. **Fixed the breaking change.** Requirements and mocks artifacts now generate *inside* the change directory; `/opsx:propose` copies the canonical files in from `docs/` right after `openspec new change`. Side effect: `openspec status` is finally accurate for these artifacts — the old `{{date}}` placeholder gotcha is gone.
+2. **Added `/opsx:update`.** Adapted the upstream revision workflow, extended with the invariants upstream can't know about: stale Contract Spec fields (they're verbatim copies of SHALL statements — silent rot), already-written contract files, signadot plan assertions, and the rule that revising an EVAL-passed group must uncheck its gate.
+3. **Ceremony scaling as explore Phase 0.** Spike → exit the workflow, just fix it. Bounded → short requirements, review still mandatory. Architectural → full flow. The classification is said out loud; the user can override.
+4. **`## Purpose` moved to propose.** The spec template authors it; archive verifies instead of writes, backed by `validate --archived`.
+5. **Validation gates.** `openspec validate` in archive pre-flight; `skip_specs: true` documented for zero-delta changes.
+
+## A Month of Practice: zijing-cup
+
+Theory is cheap. [zijing-cup](https://github.com/austinxyz/zijing-cup) is the practice: a fully open-source tennis team and lineup management tool for a Chinese university alumni tournament — Next.js 16 + FastAPI + Supabase, deployed on Vercel and Render. Built end-to-end with Claude Design + OpenSpec + Superpowers.
+
+The numbers, four days into serious feature work:
+
+- **6 changes archived** (rules engine, roster import, roster display, lineup engine, player management, read-path migration), a 7th in flight
+- **10 capability specs** live in `openspec/specs/`
+- **23k LOC** (60% Python backend, 40% TypeScript frontend), **58 test files**, 109 commits
+
+Two moments that justify the harness:
+
+**The evaluator caught a real bug after GREEN.** The lineup engine's search group passed unit tests, but the evaluator's first pass found that invalid lineup locks bypassed the per-line constraint checks entirely. BLOCK → fix tasks appended → attempt 2 passed at 99/100 with a validation layer (`check_locks` before search). That's the Generator/Evaluator split doing exactly what it exists for: the implementer had convinced itself; the fresh-context reviewer hadn't.
+
+**Claude Design closes the fidelity gap.** Every UI change starts as mocks (7 HTML mock files so far) drawn during explore. Tasks then sandwich implementation: MOCK (record tokens and exact copy) → RED → GREEN → VISUAL DIFF (dev server up, screenshot against the mock, fix drift). One example of what VISUAL DIFF catches that tests can't: a sidebar token collision put light text on `bg-background` at 1.05:1 contrast — invisible in unit tests, obvious next to the mock. Fixed to 16.07:1 with sidebar-specific tokens.
+
+And the archive phase keeps compounding: CLAUDE.md now carries pitfalls no spec would have predicted — Windows Application Control blocking `uv run uvicorn`, Google Sheets CSVs with headers on row 5, `h-screen overflow-hidden` shells swallowing long lists. Each one was paid for once and recorded; none has been paid for twice.
+
+## Takeaways
+
+1. **Fork maintenance is real but bounded.** Nine upstream versions cost one breaking fix and an afternoon — because the maintenance boundary (schema + four command files) was drawn deliberately in May.
+2. **Convergence is the best code review.** Upstream independently arriving at your design tells you more than any benchmark.
+3. **Keep the parts upstream doesn't have.** Real-cluster Runtime verdicts, the plan library, and pitfall sinking are still the fork's reason to exist.
+4. **The practice repo is the proof.** 6 archived changes with eval logs anyone can read beats any workflow diagram.
+
+---
+
+## Series
+
+1. [Stacking OpenSpec and Superpowers](/blog/openspec-superpowers-combined)
+2. [Three Weeks Later](/blog/openspec-superpowers-three-weeks-later)
+3. [Then I Added a Harness](/blog/openspec-superpowers-harness)
+4. [Then We Added Engineers](/blog/openspec-harness-team-workflow)
+5. [Your CI Pipeline Is the Wrong Tool for AI Coding Agents](/blog/ci-wrong-tool-for-ai-agents)
+6. **This post** — upstream convergence + a month of practice
+
+## References
+
+1. [OpenSpec releases](https://github.com/Fission-AI/OpenSpec/releases) — v1.4.0 through v1.11.0
+2. [Superpowers releases](https://github.com/obra/superpowers/releases) — v6.0.0 through v6.3.0
+3. [opsx-superpowers (signadot branch)](https://github.com/austinxyz/opsx-superpowers/tree/signadot) — the fork, with sync log in docs/workflow.md
+4. [zijing-cup](https://github.com/austinxyz/zijing-cup) — the open-source practice project
