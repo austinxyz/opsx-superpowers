@@ -62,6 +62,13 @@ artifacts:
       The Capabilities section creates the contract for the specs phase.
       Research existing openspec/specs/ before writing it.
 
+      Every change must either declare at least one capability (new or
+      modified) or explicitly opt out: `openspec validate` rejects a change
+      with zero deltas unless `.openspec.yaml` sets `skip_specs: true`.
+      Use `skip_specs: true` only when no spec-level behavior changes
+      (pure refactor, tooling, docs). Do not invent a requirement just to
+      satisfy validation.
+
       Keep concise (1-2 pages). Why, not how. Implementation belongs in design.md.
     requires:
       - requirements

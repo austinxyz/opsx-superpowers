@@ -16,6 +16,8 @@ Four-phase structured development with hard-boundary gates. TDD and code review 
 /opsx:archive <topic>   → archive + capability spec + CLAUDE.md cleanup
 ```
 
+Side command (any time between propose and archive): `/opsx:update <topic>` — revise existing planning artifacts and keep them coherent (Contract blocks, signadot plans, requirements copy included). Never touches code.
+
 `<topic>` is a kebab-case name (`nas-https`, `multi-user-auth`, etc.) that stays consistent across all four phases.
 
 ---
@@ -34,6 +36,8 @@ Four-phase structured development with hard-boundary gates. TDD and code review 
 | UI style change / new view | ✅ yes |
 
 **Rule of thumb:** does this touch multiple files, require multiple rounds of decision-making, and deserve a "why we did it this way" record? Yes → use OpenSpec.
+
+`/opsx:explore` now enforces this as **Phase 0 ceremony scaling** (adopted from Superpowers 6.3): it classifies each request as **spike** (exit opsx, just do it), **bounded** (fast track — short requirements, mandatory review), or **architectural** (full flow), and says the classification out loud for the user to override.
 
 ---
 
@@ -173,10 +177,11 @@ openspec/changes/<topic>/
 │       ├── README.md
 │       └── <capability>/spec.md
 │
-├── .claude/commands/opsx/               ← four slash commands (installed by opsx-install)
+├── .claude/commands/opsx/               ← slash commands (installed by opsx-install)
 │   ├── explore.md
 │   ├── propose.md
 │   ├── apply.md
+│   ├── update.md                        ← revise in-flight planning artifacts
 │   └── archive.md
 │
 └── CLAUDE.md                            ← pitfall notes (Cleanup 3 writes here)

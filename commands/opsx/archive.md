@@ -19,9 +19,10 @@ Run:
 
 ```bash
 openspec status --change <name>
+openspec validate <name>
 ```
 
-Every artifact must be `done`. Every task in `tasks.md` must be `- [x]`. If any are not, warn the user and ask for confirmation to proceed.
+Every artifact must be `done`. Every task in `tasks.md` must be `- [x]`. `validate` must pass (OpenSpec ≥1.11 catches structural problems here, including zero-delta changes without `skip_specs: true`). If any are not, warn the user and ask for confirmation to proceed.
 
 If delta specs exist at `openspec/changes/<name>/specs/`, show a sync summary (compare each delta with the corresponding `openspec/specs/<capability>/spec.md`):
 
@@ -48,15 +49,16 @@ openspec archive <name>
 
 Expected: change directory moves to `openspec/changes/archive/<date>-<name>/`. Capability specs at `openspec/specs/<capability>/spec.md` are created (if new) or updated (if delta). The proposal / specs / design / tasks files now live at `openspec/changes/archive/<date>-<name>/` (referred to as `<archived-dir>` below).
 
-### 3. Cleanup step 1 — fill capability spec `## Purpose`
+### 3. Cleanup step 1 — verify capability spec `## Purpose`
 
-`openspec archive` leaves a `## Purpose\nTBD - created by archiving change.` placeholder in any newly-created capability spec. Find them:
+The spec template now authors `## Purpose` at propose time, and `openspec validate` (≥1.10) flags unwritten Purpose sections — so this step is usually a **verification**, not authoring. Check anyway (older changes, or archive-created specs, still leave placeholders):
 
 ```bash
 grep -l 'TBD - created by archiving' openspec/specs/*/spec.md
+openspec validate --archived <date>-<name>
 ```
 
-For each match, write a 1-3 sentence Purpose derived from:
+For any hit (or any Purpose that is placeholder-thin), write a 1-3 sentence Purpose derived from:
 - The change's `<archived-dir>/proposal.md` Why section
 - The requirements doc at `docs/superpowers/specs/<date>-<name>-requirements.md` Goals section
 
