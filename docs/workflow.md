@@ -186,15 +186,16 @@ openspec/changes/<topic>/
 
 ## Known gotchas
 
-### 1. `openspec status` shows requirements and mocks as `[ ]` even when the files exist
+### 1. Requirements and mocks live in `docs/`, with copies inside the change dir
 
-OpenSpec 1.2.0 does not substitute `{{date}}` / `{{change}}` placeholders in `generates:` paths. It checks for a literal path like `...{{date}}-{{change}}-requirements.md`, which never exists.
+OpenSpec ≥1.11 requires every schema `generates:` path to stay inside the change directory (out-of-dir paths make the whole schema invalid). But requirements are authored in `/opsx:explore` — before the change directory exists. Resolution:
 
-The slash commands resolve the placeholders themselves and write files at the correct paths.
+- Canonical files stay at `docs/superpowers/specs/` (explore-phase home)
+- `/opsx:propose` copies them into `openspec/changes/<topic>/` (`requirements.md`, `mocks.html`) right after `openspec new change`
 
-**How to verify:** `ls docs/superpowers/specs/*-<topic>-requirements.md`
+Side benefit: `openspec status` is now accurate for these artifacts (the old 1.2.x behavior — literal `{{date}}` paths never matching, everything showing `[ ]` — is gone along with the placeholders).
 
-**Don't read `[ ]` as "missing"** — it's a known CLI limitation.
+**If the schema errors with "generates field must be a relative path"** — you're running a pre-fix schema copy against OpenSpec ≥1.11; re-run `bin/opsx-install`.
 
 ### 2. The `Status: REVIEWED` gate is not enforced by OpenSpec CLI
 
@@ -285,5 +286,6 @@ Don't check weekly — not worth it.
 | Date | OpenSpec version | Notes |
 |---|---|---|
 | 2026-05-10 | 1.2.0 | Fork established (baseline). Known: `{{date}}/{{change}}` not substituted in `generates:` — documented in `propose.md` caveat, non-blocking. |
+| 2026-08-31 | 1.11.0 | **BREAKING absorbed:** `generates:` must stay inside change dir → requirements/mocks artifacts now `requirements.md` / `mocks.html` in-dir; propose copies canonical files from docs/. Gotcha #1 rewritten (status now accurate). JSON fields intact (additive only: `resolvedOutputPath`, `planningHome`, `unlocks`). `openspec schemas` no longer lists user schemas (`schema which` still resolves). Upstream adds worth absorbing later: `/opsx:update` (mid-change artifact revision), `skip_specs: true`, spec-template `## Purpose`, `validate --archived`, changes `--diff`. |
 
 > Add a row here after each sync.

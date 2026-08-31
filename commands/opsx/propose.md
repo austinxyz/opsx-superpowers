@@ -41,6 +41,16 @@ openspec new change <topic> --schema superpowers-driven
 
 This scaffolds `openspec/changes/<topic>/` with `.openspec.yaml` set to `superpowers-driven`.
 
+Then copy the explore-phase artifacts into the change directory so OpenSpec tracks them as done (schema `generates` paths must stay inside the change dir as of OpenSpec 1.11):
+
+```bash
+cp docs/superpowers/specs/<date>-<topic>-requirements.md openspec/changes/<topic>/requirements.md
+# UI changes only (HAS_UI_SURFACE: yes) — mocks were drawn in /opsx:explore Phase 4:
+cp docs/superpowers/specs/mocks/<date>-<topic>-mocks.html openspec/changes/<topic>/mocks.html
+```
+
+The canonical files stay in `docs/superpowers/specs/` (the explore-phase home, authored before the change dir exists); the copies make `openspec status` accurate. For backend-only changes, `mocks.html` is generated as the stub by the mocks artifact step instead.
+
 ### 3. Generate artifacts in dependency order
 
 ```bash
@@ -58,9 +68,9 @@ Read the returned `template`, `instruction`, `dependencies`. For each dependency
 Use the **TodoWrite tool** to track artifact-generation progress.
 
 Order: `proposal` → `specs` → `design` → `mocks` → `tasks`.
-(`requirements` was created in `/opsx:explore`; openspec sees it as `done`.)
+(`requirements` was created in `/opsx:explore` and copied into the change dir at step 2; openspec sees it as `done`.)
 
-**Path resolution caveat:** the `outputPath` returned by `openspec instructions` for `requirements` and `mocks` artifacts contains literal `{{date}}` and `{{change}}` strings (OpenSpec does NOT auto-substitute). You must substitute them before writing the file. For example, `outputPath: "../../../docs/superpowers/specs/{{date}}-{{change}}-requirements.md"` with `date=2026-05-10`, `change=multi-user-auth-core` resolves to `docs/superpowers/specs/2026-05-10-multi-user-auth-core-requirements.md`.
+**Mocks artifact note:** for UI changes the real mocks were already copied to `openspec/changes/<topic>/mocks.html` at step 2 — verify content, don't regenerate. For backend-only changes, write the stub form to that same path per the artifact instruction. The canonical UI mocks remain at `docs/superpowers/specs/mocks/<date>-<topic>-mocks.html`.
 
 ### 3a. Fill in Contract blocks in tasks.md
 

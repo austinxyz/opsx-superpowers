@@ -3,8 +3,12 @@ version: 1
 description: Superpowers OpenSpec workflow - requirements → proposal → specs → mocks → design → tasks
 artifacts:
   - id: requirements
-    generates: "../../../docs/superpowers/specs/{{date}}-{{change}}-requirements.md"
-    description: Reviewed requirements doc — output of /opsx:explore
+    # OpenSpec ≥1.11 requires generates to stay inside the change directory.
+    # Canonical file is authored by /opsx:explore at
+    # docs/superpowers/specs/<date>-<topic>-requirements.md (before the change
+    # dir exists); /opsx:propose copies it here so status tracks it as done.
+    generates: requirements.md
+    description: Reviewed requirements doc — output of /opsx:explore (copied in by /opsx:propose)
     template: requirements.md
     instruction: |
       Capture WHAT and WHY before any implementation thinking.
@@ -161,7 +165,10 @@ artifacts:
     requires:
       - proposal
   - id: mocks
-    generates: "../../../docs/superpowers/specs/mocks/{{date}}-{{change}}-mocks.html"
+    # OpenSpec ≥1.11: in-dir path required. Canonical mocks (UI changes) are
+    # authored by /opsx:explore Phase 4 at docs/superpowers/specs/mocks/;
+    # /opsx:propose copies them here (or writes the stub for backend-only).
+    generates: mocks.html
     description: HTML mocks for UI changes; 1-line stub for backend-only changes
     template: mocks.html
     instruction: |
