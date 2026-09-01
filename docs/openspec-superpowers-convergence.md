@@ -89,6 +89,8 @@ Two moments that justify the harness:
 
 And the archive phase keeps compounding: CLAUDE.md now carries pitfalls no spec would have predicted — Windows Application Control blocking `uv run uvicorn`, Google Sheets CSVs with headers on row 5, `h-screen overflow-hidden` shells swallowing long lists. Each one was paid for once and recorded; none has been paid for twice.
 
+**The upgrade shows up in the repo itself.** The same project now contains changes from both toolchain generations, and the diff is visible in the artifact trees. Changes archived before the upgrade (`2026-08-29-lineup-engine`) have no `requirements.md` or `mocks.html` inside the change directory — and `openspec status` reported those artifacts as missing for their entire life. Changes from after (`2026-09-01-lineup-results-redesign`) carry both copies in-dir, and status showed all-green for the first time. The absence of `## Purpose` in the new change's spec deltas is the template working as designed, too — Purpose is authored only for *new* capabilities, and these changes modified existing ones.
+
 ## Takeaways
 
 1. **Fork maintenance is real but bounded.** Nine upstream versions cost one breaking fix and an afternoon — because the maintenance boundary (schema + four command files) was drawn deliberately in May.
