@@ -75,15 +75,17 @@ Five edits, all on the [signadot branch](https://github.com/austinxyz/opsx-super
 
 Theory is cheap. [zijing-cup](https://github.com/austinxyz/zijing-cup) is the practice: a fully open-source tennis team and lineup management tool for a Chinese university alumni tournament — Next.js 16 + FastAPI + Supabase, deployed on Vercel and Render. Built end-to-end with Claude Design + OpenSpec + Superpowers.
 
-The numbers, four days into serious feature work:
+The numbers, one week into serious feature work (and still climbing — the first draft of this post said 6 changes; by publish week it was 18):
 
-- **6 changes archived** (rules engine, roster import, roster display, lineup engine, player management, read-path migration), a 7th in flight
-- **10 capability specs** live in `openspec/specs/`
-- **23k LOC** (60% Python backend, 40% TypeScript frontend), **58 test files**, 109 commits
+- **18 changes archived** — rules engine, roster import/display, lineup engine, player management, saved filters, saved lineups with 4-state revalidation, single-seat pinning, win/loss tracking, roster seat editing, scoped per-competition admin auth — with a 19th in flight
+- **13 capability specs** live in `openspec/specs/`
+- **46k LOC** (Python backend + TypeScript frontend), **382 test files**, 239 commits
 
 Two moments that justify the harness:
 
 **The evaluator caught a real bug after GREEN.** The lineup engine's search group passed unit tests, but the evaluator's first pass found that invalid lineup locks bypassed the per-line constraint checks entirely. BLOCK → fix tasks appended → attempt 2 passed at 99/100 with a validation layer (`check_locks` before search). That's the Generator/Evaluator split doing exactly what it exists for: the implementer had convinced itself; the fresh-context reviewer hadn't.
+
+**The scores are a real distribution, not a rubber stamp.** Across 18 changes the eval gate has produced everything from a perfect 100 (`saved-lineup-order`) to an 87 with a CRITICAL spec-compliance finding (`lineup-page-defaults` — a toggle required by the design simply wasn't implemented) and a 94 carrying a HIGH finding on a missed rules-inspection path (`team-roster-editing`). A gate that only ever says 98 is decoration; one that hands you an 87 with a named missing feature is doing its job.
 
 **Claude Design closes the fidelity gap.** Every UI change starts as mocks (7 HTML mock files so far) drawn during explore. Tasks then sandwich implementation: MOCK (record tokens and exact copy) → RED → GREEN → VISUAL DIFF (dev server up, screenshot against the mock, fix drift). One example of what VISUAL DIFF catches that tests can't: a sidebar token collision put light text on `bg-background` at 1.05:1 contrast — invisible in unit tests, obvious next to the mock. Fixed to 16.07:1 with sidebar-specific tokens.
 
@@ -91,12 +93,28 @@ And the archive phase keeps compounding: CLAUDE.md now carries pitfalls no spec 
 
 **The upgrade shows up in the repo itself.** The same project now contains changes from both toolchain generations, and the diff is visible in the artifact trees. Changes archived before the upgrade (`2026-08-29-lineup-engine`) have no `requirements.md` or `mocks.html` inside the change directory — and `openspec status` reported those artifacts as missing for their entire life. Changes from after (`2026-09-01-lineup-results-redesign`) carry both copies in-dir, and status showed all-green for the first time. The absence of `## Purpose` in the new change's spec deltas is the template working as designed, too — Purpose is authored only for *new* capabilities, and these changes modified existing ones.
 
+## Do the SDD Critiques Land Here?
+
+A widely-shared Chinese post ("From OpenSpec to AIDLC") recently made the case for abandoning OpenSpec in team settings, replacing it with Amazon's AIDLC workflow. Its six criticisms of vanilla OpenSpec are a useful audit checklist — worth scoring this harness against them honestly.
+
+| Critique of vanilla OpenSpec | Status here |
+|---|---|
+| Commands too complex; nobody remembers explore-vs-propose order | **Mostly addressed.** Hard gates enforce the order mechanically (`propose` refuses without a REVIEWED requirements doc), and explore's Phase 0 decides *for* you whether the workflow applies at all. But there are still commands to learn — AIDLC's "resident butler" model, where one always-on workflow dispatches sub-flows, is genuinely lower-friction |
+| Original intent never recorded; reviewers can't tell why a spec says what it says | **Addressed.** `requirements.md` *is* the intent artifact — Goals, Non-Goals, User Stories, Open Questions — reviewed to REVIEWED status and (since 1.11) archived inside every change. What we don't keep is the turn-by-turn conversation; AIDLC's `audit.md` records the dialog, we record the conclusions |
+| Requirement granularity impossible to judge; wish-style prompts produce demos | **Addressed.** Phase 0 tiers + explore's scope check (too big → decompose into sub-changes). Evidence: 18 zijing-cup changes averaging one capability slice each, 12 of them in a single week |
+| Docs drift from code; editing tasks.md never updates design.md | **Addressed by design.** `/opsx:update` exists precisely for this: any-direction reconciliation, stale Contract detection, re-opening passed gates when their group is revised. The per-group EVAL also checks code against spec continuously. (Honest caveat: zijing-cup hasn't needed `/opsx:update` yet — the mechanism is newer than the practice) |
+| Nobody knows when to start the workflow (bug mid-apply? new idea mid-fix?) | **Addressed.** Phase 0 answers "just fix it or run the flow" out loud; bugs during apply have a built-in FIX-task loop; mid-change ideas hit update's refine-vs-new-change heuristic |
+| No team collaboration: no approval gates, no accountability for who approved what | **Real gap.** My gates are machine gates — the evaluator blocks, but no human role signs off between phases. `workflow-team.md` sketches a four-layer team gate but it's a concept doc. AIDLC's approval/execute split and signed `audit.md` (user + email per approval) are ahead here and worth absorbing |
+
+Net: four of six addressed, one mostly, one conceded. The critique is aimed at bare OpenSpec, and most of it stops landing once a harness is wrapped around the spec layer — but the team-approval gap is real, and AIDLC's signed audit trail is the next thing worth stealing.
+
 ## Takeaways
 
 1. **Fork maintenance is real but bounded.** Nine upstream versions cost one breaking fix and an afternoon — because the maintenance boundary (schema + four command files) was drawn deliberately in May.
 2. **Convergence is the best code review.** Upstream independently arriving at your design tells you more than any benchmark.
 3. **Keep the parts upstream doesn't have.** Real-cluster Runtime verdicts, the plan library, and pitfall sinking are still the fork's reason to exist.
-4. **The practice repo is the proof.** 6 archived changes with eval logs anyone can read beats any workflow diagram.
+4. **The critiques that survive a harness are the roadmap.** Of the popular case against SDD, the piece left standing is team approval gates — that's the next iteration, not a reason to switch frameworks.
+5. **The practice repo is the proof.** 18 archived changes with eval logs anyone can read beats any workflow diagram.
 
 ---
 
@@ -115,3 +133,4 @@ And the archive phase keeps compounding: CLAUDE.md now carries pitfalls no spec 
 2. [Superpowers releases](https://github.com/obra/superpowers/releases) — v6.0.0 through v6.3.0
 3. [opsx-superpowers (signadot branch)](https://github.com/austinxyz/opsx-superpowers/tree/signadot) — the fork, with sync log in docs/workflow.md
 4. [zijing-cup](https://github.com/austinxyz/zijing-cup) — the open-source practice project
+5. 骞先生, "从OpenSpec到AIDLC，我是如何提升团队AI代码质量的" — the SDD critique scored in this post; AIDLC source: [aidlc-skills](https://github.com/qtalen/aidlc-skills), upstream: AWS aidlc-workflows
