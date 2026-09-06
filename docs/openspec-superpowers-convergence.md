@@ -104,16 +104,16 @@ A widely-shared Chinese post ("From OpenSpec to AIDLC") recently made the case f
 | Requirement granularity impossible to judge; wish-style prompts produce demos | **Addressed.** Phase 0 tiers + explore's scope check (too big → decompose into sub-changes). Evidence: 18 zijing-cup changes averaging one capability slice each, 12 of them in a single week |
 | Docs drift from code; editing tasks.md never updates design.md | **Addressed by design.** `/opsx:update` exists precisely for this: any-direction reconciliation, stale Contract detection, re-opening passed gates when their group is revised. The per-group EVAL also checks code against spec continuously. (Honest caveat: zijing-cup hasn't needed `/opsx:update` yet — the mechanism is newer than the practice) |
 | Nobody knows when to start the workflow (bug mid-apply? new idea mid-fix?) | **Addressed.** Phase 0 answers "just fix it or run the flow" out loud; bugs during apply have a built-in FIX-task loop; mid-change ideas hit update's refine-vs-new-change heuristic |
-| No team collaboration: no approval gates, no accountability for who approved what | **Real gap.** My gates are machine gates — the evaluator blocks, but no human role signs off between phases. `workflow-team.md` sketches a four-layer team gate but it's a concept doc. AIDLC's approval/execute split and signed `audit.md` (user + email per approval) are ahead here and worth absorbing |
+| No team collaboration: no approval gates, no accountability for who approved what | **Addressed in the team layer — differently.** [The team workflow](/blog/openspec-harness-team-workflow) routes human approval through git-native machinery instead of custom audit files: **PR1** is a spec-only review (requirements + proposal + design + tasks, no code) whose merge *locks* the spec before apply starts; the four-layer achieve gate's Layer 3 is a human PR gate (≥1 approval + CI green + no open comments); and every approval is signed by the reviewer's GitHub identity for free. AIDLC rebuilds this inside the workflow (`audit.md` with user/email, approve-vs-continue split) — useful if you can't lean on a git host, redundant if you can. For solo development neither is needed |
 
-Net: four of six addressed, one mostly, one conceded. The critique is aimed at bare OpenSpec, and most of it stops landing once a harness is wrapped around the spec layer — but the team-approval gap is real, and AIDLC's signed audit trail is the next thing worth stealing.
+Net: five of six addressed, one mostly. The critique is aimed at bare OpenSpec, and it stops landing once a harness is wrapped around the spec layer — the team-approval point in particular was answered by the team workflow months earlier, with git PRs playing the role AIDLC assigns to its audit files.
 
 ## Takeaways
 
 1. **Fork maintenance is real but bounded.** Nine upstream versions cost one breaking fix and an afternoon — because the maintenance boundary (schema + four command files) was drawn deliberately in May.
 2. **Convergence is the best code review.** Upstream independently arriving at your design tells you more than any benchmark.
 3. **Keep the parts upstream doesn't have.** Real-cluster Runtime verdicts, the plan library, and pitfall sinking are still the fork's reason to exist.
-4. **The critiques that survive a harness are the roadmap.** Of the popular case against SDD, the piece left standing is team approval gates — that's the next iteration, not a reason to switch frameworks.
+4. **Audit the critiques, don't chase them.** The popular case against SDD dissolves almost entirely against a harnessed setup — and the team-approval point it leads with was already answered by git-native PR gates in the team workflow. Score criticism against what you've built before absorbing someone else's fix.
 5. **The practice repo is the proof.** 18 archived changes with eval logs anyone can read beats any workflow diagram.
 
 ---
